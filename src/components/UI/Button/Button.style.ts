@@ -10,9 +10,11 @@ export const StyledButton = styled.button`
   transition: 200ms;
   width: 100%;
   margin-bottom: 30px;
+  border-color: blueviolet;
 
-  background-color: #526ed3;
+  background-color: blueviolet;
   color: white;
+
   
 
 &:disabled {
