@@ -9,6 +9,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../components/UI/Logo/Logo";
 
 interface ILoginForm {
   ureremail: string;
@@ -45,55 +46,56 @@ export const LoginPage = () => {
   };
 
   return (
-    <Container>
-      <StyledLoginPage>
-        <Heading headingText="Авторизация" />
-        <form
-          onSubmit={handleSubmit((data) => {
-            console.table(data);
-            goToNextPage();
-          })}
-        >
-          <Controller
-            name="useremail"
-            control={control}
-            render={({ field }) => (
-              <Input
-                isError={errors.useremail ? true : false}
-                errorMessage={errors.useremail?.message}
-                type="email"
-                placeholder="Почта"
-                {...field}
-              />
-            )}
+      <Container>
+        <Logo />
+        <StyledLoginPage>
+          <Heading headingText="Авторизация" />
+          <form
+            onSubmit={handleSubmit((data) => {
+              console.table(data);
+              goToNextPage();
+            })}
+          >
+            <Controller
+              name="useremail"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  isError={errors.useremail ? true : false}
+                  errorMessage={errors.useremail?.message}
+                  type="email"
+                  placeholder="Почта"
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              name="userpassword"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  isError={errors.userpassword ? true : false}
+                  errorMessage={errors.userpassword?.message}
+                  type="password"
+                  placeholder="Пароль"
+                  {...field}
+                />
+              )}
+            />
+            <Button
+              disabled={!!Object.keys(errors).length}
+              isPrimary
+              type="submit"
+              buttonText="Войти"
+            />
+          </form>
+          <StyledLink to="/" linkText="Забыли пароль?" />
+          <RegistrationInfo
+            question="У вас нет аккаунта?"
+            linkLabel="Зарегистрироваться"
+            linkURL="/registration"
           />
-          <Controller
-            name="userpassword"
-            control={control}
-            render={({ field }) => (
-              <Input
-                isError={errors.userpassword ? true : false}
-                errorMessage={errors.userpassword?.message}
-                type="password"
-                placeholder="Пароль"
-                {...field}
-              />
-            )}
-          />
-          <Button
-            disabled={!!Object.keys(errors).length}
-            isPrimary
-            type="submit"
-            buttonText="Войти"
-          />
-        </form>
-        <StyledLink to="/" linkText="Забыли пароль?" />
-        <RegistrationInfo
-          question="У вас нет аккаунта?"
-          linkLabel="Зарегистрироваться"
-          linkURL="/registration"
-        />
-      </StyledLoginPage>
-    </Container>
+        </StyledLoginPage>
+      </Container>
   );
 };

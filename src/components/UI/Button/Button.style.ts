@@ -19,6 +19,7 @@ export const StyledButton = styled.button`
 
 &:disabled {
     background-color: #C1C6D3;
+    border-color: #C1C6D3;
   }
   &:disabled:hover {
     cursor: default;
