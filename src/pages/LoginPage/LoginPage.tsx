@@ -28,7 +28,6 @@ export const LoginPage = () => {
   const {
     control,
     handleSubmit,
-    formState,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(loginFormSchema),
@@ -41,7 +40,7 @@ export const LoginPage = () => {
 
   const goToNextPage = () => {
     if (Object.keys(errors).length === 0) {
-      navigate("/step-one");
+      navigate("/registration");
     }
   };
 
