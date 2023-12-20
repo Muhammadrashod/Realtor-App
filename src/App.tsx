@@ -1,6 +1,7 @@
 import React from "react";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Font from "./components/UI/Font/Font";
 
 const routerConfig = createBrowserRouter([
   {
@@ -11,9 +12,11 @@ const routerConfig = createBrowserRouter([
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <RouterProvider router={routerConfig} />
-    </div>
+    <Font>
+      <div className="App">
+        <RouterProvider router={routerConfig} />
+      </div>
+    </Font>
   );
 };
 
