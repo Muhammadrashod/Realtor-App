@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../components/UI/Logo/Logo";
 
 interface ILoginForm {
-  ureremail: string;
+  useremail: string;
   userpassword: string;
 }
 
@@ -29,7 +29,7 @@ export const LoginPage = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ILoginForm>({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
       useremail: "",
@@ -45,56 +45,56 @@ export const LoginPage = () => {
   };
 
   return (
-      <Container>
-        <Logo />
-        <StyledLoginPage>
-          <Heading headingText="Авторизация" />
-          <form
-            onSubmit={handleSubmit((data) => {
-              console.table(data);
-              goToNextPage();
-            })}
-          >
-            <Controller
-              name="useremail"
-              control={control}
-              render={({ field }) => (
-                <Input
-                  isError={errors.useremail ? true : false}
-                  errorMessage={errors.useremail?.message}
-                  type="email"
-                  placeholder="Почта"
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="userpassword"
-              control={control}
-              render={({ field }) => (
-                <Input
-                  isError={errors.userpassword ? true : false}
-                  errorMessage={errors.userpassword?.message}
-                  type="password"
-                  placeholder="Пароль"
-                  {...field}
-                />
-              )}
-            />
-            <Button
-              disabled={!!Object.keys(errors).length}
-              isPrimary
-              type="submit"
-              buttonText="Войти"
-            />
-          </form>
-          <StyledLink to="/" linkText="Забыли пароль?" />
-          <RegistrationInfo
-            question="У вас нет аккаунта?"
-            linkLabel="Зарегистрироваться"
-            linkURL="/registration"
+    <Container>
+      <Logo />
+      <StyledLoginPage>
+        <Heading headingText="Авторизация" headingType="h1" />
+        <form
+          onSubmit={handleSubmit((data) => {
+            console.table(data);
+            goToNextPage();
+          })}
+        >
+          <Controller
+            name="useremail"
+            control={control}
+            render={({ field }) => (
+              <Input
+                isError={errors.useremail ? true : false}
+                errorMessage={errors.useremail?.message}
+                type="email"
+                placeholder="Почта"
+                {...field}
+              />
+            )}
           />
-        </StyledLoginPage>
-      </Container>
+          <Controller
+            name="userpassword"
+            control={control}
+            render={({ field }) => (
+              <Input
+                isError={errors.userpassword ? true : false}
+                errorMessage={errors.userpassword?.message}
+                type="password"
+                placeholder="Пароль"
+                {...field}
+              />
+            )}
+          />
+          <Button
+            disabled={!!Object.keys(errors).length}
+            isPrimary
+            type="submit"
+            buttonText="Войти"
+          />
+        </form>
+        <StyledLink to="/forgetpassword" linkText="Забыли пароль?" />
+        <RegistrationInfo
+          question="У вас нет аккаунта?"
+          linkLabel="Зарегистрироваться"
+          linkURL="/registration"
+        />
+      </StyledLoginPage>
+    </Container>
   );
 };

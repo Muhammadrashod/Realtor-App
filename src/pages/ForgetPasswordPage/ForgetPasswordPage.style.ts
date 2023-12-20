@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledRegistrationPage = styled.div`
+export const StyledForgetPasswordPage = styled.div`
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
   background-color: #fff;

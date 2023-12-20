@@ -3,15 +3,19 @@ import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Font from "./components/UI/Font/Font";
-
+import { ForgetPasswordPage } from "./pages/ForgetPasswordPage/ForgetPasswordPage";
 const routerConfig = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
   },
   {
-    path: "/registartion",
+    path: "/registration", 
     element: <RegistrationPage />,
+  },
+  {
+    path: "/forgetpassword", 
+    element: <ForgetPasswordPage />,
   },
 ]);
 
