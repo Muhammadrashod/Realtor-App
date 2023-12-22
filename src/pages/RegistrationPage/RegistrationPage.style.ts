@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import "../../components/UI/FadeIn/FadeInAnimation.css";
+
 
 export const StyledRegistrationPage = styled.div`
   box-shadow: 0 0 10px #e3e3e3;
@@ -9,6 +11,8 @@ export const StyledRegistrationPage = styled.div`
   max-width: 500px;
   text-align: center;
   padding: 40px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
 
   h1 {
     margin-bottom: 50px;

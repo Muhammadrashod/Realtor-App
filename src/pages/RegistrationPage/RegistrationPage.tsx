@@ -107,7 +107,7 @@ export const RegistrationPage = () => {
         <LoginInfo
           question="У вас есть аккаунт?"
           linkLabel="Войти"
-          linkURL="/"
+          linkURL="/login"
         />
       </StyledRegistrationPage>
     </Container>

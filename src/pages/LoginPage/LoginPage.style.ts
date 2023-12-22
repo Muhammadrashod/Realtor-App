@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import "../../components/UI/FadeIn/FadeInAnimation.css";
 
-export const StyledLoginPage =  styled.div`
+export const StyledLoginPage = styled.div`
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
   background-color: #fff;
@@ -9,11 +10,13 @@ export const StyledLoginPage =  styled.div`
   max-width: 500px;
   text-align: center;
   padding: 40px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
 
   h1 {
     margin-bottom: 50px;
   }
-  
+
   a {
     display: inline-block;
     width: 100%;
@@ -25,7 +28,7 @@ export const StyledLoginPage =  styled.div`
     }
   }
 
-@media (max-width: 530px) {
+  @media (max-width: 530px) {
     width: 100%;
-}
-`
+  }
+`;
