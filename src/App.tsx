@@ -6,6 +6,8 @@ import Font from "./components/UI/Font/Font";
 import { ForgetPasswordPage } from "./pages/ForgetPasswordPage/ForgetPasswordPage";
 import GreetingPage from "./pages/GreetingPage/GreetingPage";
 import { MainPage } from "./pages/MainPage/MainPage";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const routerConfig = createBrowserRouter([
   {
@@ -21,22 +23,22 @@ const routerConfig = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/registration", 
+    path: "/registration",
     element: <RegistrationPage />,
   },
   {
-    path: "/forgetpassword", 
+    path: "/forgetpassword",
     element: <ForgetPasswordPage />,
   },
 ]);
 
 const App: React.FC = () => {
   return (
-    <Font>
-      <div className="App">
+    <Provider store={store}>
+      <Font>
         <RouterProvider router={routerConfig} />
-      </div>
-    </Font>
+      </Font>
+    </Provider>
   );
 };
 

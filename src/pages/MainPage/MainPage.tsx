@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "../../components/UI/Container/Container.style";
 import Navbar from "../../components/UI/Navbar/Navbar";
 import { useGetForSaleQuery } from "../../store/API/saleApi";
 
 export const MainPage = () => {
-  const {data, isLoading, error} = useGetForSaleQuery("5002,6020")
+  const { data, error, isLoading } = useGetForSaleQuery("");
 
-  if(data) {
-    console.log(data)
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+    }
+
+    if (error) {
+      console.error(error);
+    }
+  }, [data, error]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
-  if(error) {
-    console.log(error)
-  }
+
   return (
     <Container>
-      {}
-      <h1>MainPage</h1>
       <Navbar />
+      <h1>MainPage</h1>
     </Container>
   );
 };
