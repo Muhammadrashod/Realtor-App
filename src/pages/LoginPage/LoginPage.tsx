@@ -40,7 +40,7 @@ export const LoginPage = () => {
 
   const goToNextPage = () => {
     if (Object.keys(errors).length === 0) {
-      navigate("/registration");
+      navigate("/main");
     }
   };
 

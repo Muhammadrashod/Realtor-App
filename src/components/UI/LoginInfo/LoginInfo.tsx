@@ -10,7 +10,7 @@ export const LoginInfo = ({question, linkLabel,linkURL }: ILoginForm ) => {
   return (
     <StyledRegistrationInfo>
       <span>
-     У вас уже есть аккаунт? <a href="/">Войти</a>
+     У вас уже есть аккаунт? <a href="/login">Войти</a>
       </span>
     </StyledRegistrationInfo>
   );

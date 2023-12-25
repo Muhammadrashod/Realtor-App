@@ -5,11 +5,16 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Font from "./components/UI/Font/Font";
 import { ForgetPasswordPage } from "./pages/ForgetPasswordPage/ForgetPasswordPage";
 import GreetingPage from "./pages/GreetingPage/GreetingPage";
+import { MainPage } from "./pages/MainPage/MainPage";
 
 const routerConfig = createBrowserRouter([
   {
     path: "/",
     element: <GreetingPage />,
+  },
+  {
+    path: "/main",
+    element: <MainPage />,
   },
   {
     path: "/login",

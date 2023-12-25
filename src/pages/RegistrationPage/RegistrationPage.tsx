@@ -43,7 +43,7 @@ export const RegistrationPage = () => {
 
   const goToNextPage = () => {
     if (Object.keys(errors).length === 0) {
-      navigate("/");
+      navigate("/main");
     }
   };
 
