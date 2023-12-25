@@ -10,7 +10,7 @@ export interface IRealtorRequestParams {
 }
 
 export const searchApi = createApi({
-  reducerPath: "searchApi", 
+  reducerPath: "searchApi",
   baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   endpoints: (builder) => ({
     getForSale: builder.query<RealtorResponse, IRealtorRequestParams>({
@@ -19,10 +19,6 @@ export const searchApi = createApi({
         method: "GET",
         params: {
           location: params.location,
-        },
-        headers: {
-          'X-RapidAPI-Key': '0edb7daa60msh1d95aeb2742ecbcp168a94jsn463033e9499b',
-          'X-RapidAPI-Host': 'realtor16.p.rapidapi.com',
         },
       }),
     }),
