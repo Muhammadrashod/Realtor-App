@@ -1,25 +1,49 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
+type StyledButtonProps = {
+  isPrimary?: boolean;
+  isDisabled?: boolean;
+  isSecondary?: boolean;
+};
 
-export const StyledButton = styled.button`
- cursor: pointer;
+export const StyledButton = styled.button<StyledButtonProps>`
+  cursor: pointer;
   padding: 12px 15px;
   font-size: inherit;
   border-radius: 10px;
-  color: white;
+  background-color: ${(props) => props.theme.colors.bgc};
   transition: 200ms;
   width: 100%;
   margin-bottom: 30px;
-  border-color: blueviolet;
+  border-color: ${(props) => props.theme.colors.blueviolet};
 
-  background-color: blueviolet;
-  color: white;
+  ${(props) =>
+    props.isPrimary &&
+    `
+ background-color: var(--prime-color);
+ color: white;
+ `}
 
-  
+  ${(props) =>
+    props.isSecondary &&
+    `
+ background-color: var(--light-gray);
+ color: vsr(--placeholder-color);
+ `}
 
-&:disabled {
-    background-color: #C1C6D3;
-    border-color: #C1C6D3;
+  ${(props) =>
+    props.isDisabled &&
+    `
+    background-color: var(--disabledBgc)};
+    border-color: var(--disabledBgc)};
+ `}
+
+  background-color: ${(props) => props.theme.colors.blueviolet};
+  color: ${(props) => props.theme.colors.elemsBgc};
+
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.disabledBgc};
+    border-color: ${(props) => props.theme.colors.disabledBgc};
   }
   &:disabled:hover {
     cursor: default;
@@ -40,5 +64,5 @@ export const StyledButton = styled.button`
   }
   @media (max-width: 730px) {
     padding: 10px 12px;
-}
-`
+  }
+`;

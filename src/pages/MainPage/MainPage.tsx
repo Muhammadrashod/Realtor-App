@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Container } from "../../components/UI/Container/Container.style";
-import Navbar from "../../components/UI/Navbar/Navbar";
 import { useGetForSaleQuery } from "../../store/API/saleApi";
+import Cards from "../../components/UI/Cards/Cards";
+import Logo from "../../components/UI/Logo/Logo";
 
 export const MainPage = () => {
   const { data, error, isLoading } = useGetForSaleQuery("");
@@ -22,8 +23,8 @@ export const MainPage = () => {
 
   return (
     <Container>
-      <Navbar />
-      <h1>MainPage</h1>
+      <Logo />
+      <Cards />
     </Container>
   );
 };

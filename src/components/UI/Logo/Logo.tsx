@@ -1,17 +1,16 @@
 // Logo.tsx
 import React from "react";
 import { css } from "aphrodite";
-import styles from "./Logo.style";
-
+import LogoStyles from "./Logo.style";
 const Logo: React.FC = () => {
   return (
-    <div className={css(styles.logoContainer)}>
+    <div className={css(LogoStyles.logoContainer)}>
       <img
         src="/realtor.png"
         alt="Realtor Logo"
-        className={css(styles.logoImage)}
+        className={css(LogoStyles.logoImage)}
       />
-      <span className={css(styles.logoText)}>Realtor</span>
+      <span className={css(LogoStyles.logoText)}>Realtor</span>
     </div>
   );
 };

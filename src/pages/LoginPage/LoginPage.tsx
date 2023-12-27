@@ -1,14 +1,15 @@
-import { RegistrationInfo } from "../../components/UI/RegistartionInfo/ReagistartionInfo";
+import { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
+import { Container } from "../../components/UI/Container/Container.style";
+import { Input } from "../../components/UI/Input/Input";
+import { Button } from "../../components/UI/Button/Button";
+import { StyledLoginPage } from "./LoginPage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { StyledLink } from "../../components/Typography/StyledLink";
-import { Button } from "../../components/UI/Button/Button";
-import { Container } from "../../components/UI/Container/Container.style";
-import { StyledLoginPage } from "./LoginPage.style";
-import { Input } from "../../components/UI/Input/Input";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Controller, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { RegistrationInfo } from "../../components/UI/RegistartionInfo/ReagistartionInfo";
 import Logo from "../../components/UI/Logo/Logo";
 
 interface ILoginForm {
@@ -29,6 +30,8 @@ export const LoginPage = () => {
     control,
     handleSubmit,
     formState: { errors },
+    setValue,
+    getValues,
   } = useForm<ILoginForm>({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
@@ -36,10 +39,25 @@ export const LoginPage = () => {
       userpassword: "",
     },
   });
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("loginFormData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setValue("useremail", parsedData.useremail);
+      setValue("userpassword", parsedData.userpassword);
+    }
+  }, [setValue]);
 
   const goToNextPage = () => {
     if (Object.keys(errors).length === 0) {
+      const formData = getValues(["useremail", "userpassword"]);
+      localStorage.setItem("loginFormData", JSON.stringify(formData));
+
+      console.log("Form Data:", formData);
+
       navigate("/main");
     }
   };

@@ -1,13 +1,12 @@
-// Logo.style.ts
 import { StyleSheet } from "aphrodite";
 
-interface LogoStyles {
+interface LogoStylesProps {
   logoContainer: React.CSSProperties;
   logoImage: React.CSSProperties;
   logoText: React.CSSProperties;
 }
 
-const styles: LogoStyles = StyleSheet.create({
+const LogoStyles: LogoStylesProps = StyleSheet.create({
   logoContainer: {
     display: "flex",
     alignItems: "center",
@@ -17,7 +16,7 @@ const styles: LogoStyles = StyleSheet.create({
     margin: "10px",
     transition: "transform 0.3s ease",
     ":hover": {
-      transform: "scale(1.1)", // Make it 10% larger on hover
+      transform: "scale(1.1)",
     },
   },
   logoImage: {
@@ -28,8 +27,8 @@ const styles: LogoStyles = StyleSheet.create({
     overflow: "hidden",
     transition: "transform 0.3s ease, filter 0.3s ease",
     ":hover": {
-      transform: "scale(1.1)", // Make it 10% larger on hover
-      filter: "brightness(1.2)", // Add brightness on hover
+      transform: "scale(1.1)",
+      filter: "brightness(1.2)",
     },
     "::before": {
       content: '""',
@@ -43,8 +42,8 @@ const styles: LogoStyles = StyleSheet.create({
       transform: "rotate(45deg)",
       transition: "transform 0.3s ease",
       opacity: 0,
-      boxShadow: "0 0 20px rgba(0, 0, 255, 0.8)", // Additional box shadow for shine
-      filter: "blur(5px)", // Additional blur for shine
+      boxShadow: "0 0 20px rgba(0, 0, 255, 0.8)",
+      filter: "blur(5px)",
     },
     ":hover::before": {
       transform: "rotate(45deg) translate(100%, 100%)",
@@ -75,11 +74,10 @@ const styles: LogoStyles = StyleSheet.create({
     color: "black",
     transition: "transform 0.3s ease, filter 0.3s ease, color 0.3s ease",
     ":hover": {
-      transform: "scale(1.1)", // Make it 10% larger on hover
-      filter: "brightness(1.2)", // Add brightness on hover
-      color: "blue", // Change text color to blue on hover
+      transform: "scale(1.1)",
+      filter: "brightness(1.2)",
     },
   },
 });
 
-export default styles;
+export default LogoStyles;
