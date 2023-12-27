@@ -23,7 +23,7 @@ export const saleApi = createApi({
   }),
   endpoints: (builder) => ({
     getForSale: builder.query<RealtorResponse, any>({
-      query: (locationExternalIDs= "5002,6020") => ({
+      query: (locationExternalIDs) => ({
         url: "/properties/list",
         params: {
           locationExternalIDs,

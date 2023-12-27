@@ -5,7 +5,7 @@ import Cards from "../../components/UI/Cards/Cards";
 import Logo from "../../components/UI/Logo/Logo";
 
 export const MainPage = () => {
-  const { data, error, isLoading } = useGetForSaleQuery("");
+  const { data, error, isLoading } = useGetForSaleQuery("5002,6020");
 
   useEffect(() => {
     if (data) {
@@ -24,7 +24,7 @@ export const MainPage = () => {
   return (
     <Container>
       <Logo />
-      <Cards />
+      {Array.isArray(data) && data.map((cardData) => <Cards key={cardData.id} data={cardData} />)}
     </Container>
   );
 };

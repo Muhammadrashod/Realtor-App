@@ -16,6 +16,20 @@ interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
 
+interface IGetListProps {
+  state: string;
+  price: number;
+  purpose: string;
+  title: string;
+  location: [level: number, name: string];
+  rooms: number;
+  baths: number;
+  area: number;
+  coverPhoto: [id: number, url: string, main: boolean];
+  phoneNumber: [mobile: number, phone: number];
+  contactName: string;
+}
+
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -49,7 +63,19 @@ const DateOverlay = styled("div")(({ theme }) => ({
   zIndex: 1,
 }));
 
-const Cards = () => {
+const Cards = ({
+  state,
+  price,
+  purpose,
+  title,
+  location,
+  rooms,
+  baths,
+  area,
+  coverPhoto,
+  phoneNumber,
+  contactName,
+}: IGetListProps) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -70,9 +96,8 @@ const Cards = () => {
       <CardContent>
         <CardHeader title="Paella Dish" />
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          "Квартира в Джумейра Вилладж Серкл (ДЖВС)，ДжейВиСи Дистрикт 10,
+          Плаззо Хайтс, 1 спальня, 7499 AED - 6030023"
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
