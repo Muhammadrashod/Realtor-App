@@ -24,7 +24,7 @@ export const MainPage = () => {
   return (
     <Container>
       <Logo />
-      {Array.isArray(data) && data.map((cardData) => <Cards key={cardData.id} data={cardData} />)}
+      {/* <Cards /> */}
     </Container>
   );
 };
