@@ -1,10 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const InputContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const StyledModalInput = styled.input`
+export const ErrorMessage = styled.p`
+  color: red;
+  margin-top: 10px;
+`;
+
+interface IStyledInputProps {
+  $isError: boolean;
+}
+
+export const StyledModalInput = styled.input<IStyledInputProps>`
   border: 1px solid transparent;
   outline: 0;
   display: block;
@@ -16,6 +25,16 @@ export const StyledModalInput = styled.input`
   color: black; /* Default text color */
   border: 1px solid #526ed3;
 
+  ${(props) =>
+    props.$isError &&
+    css`
+      border: 1px solid red;
+      color: red;
+      &::placeholder {
+        color: red;
+      }
+      transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    `}
 
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
     color 0.3s ease-in-out;

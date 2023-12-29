@@ -1,6 +1,9 @@
 import React from "react";
-import { InputContainer } from "../Input/Input.style";
-import { StyledModalInput } from "./ModalInput.style";
+import {
+  StyledModalInput,
+  ErrorMessage,
+  InputContainer,
+} from "./ModalInput.style";
 
 interface InputProps {
   placeholder: string;
@@ -9,10 +12,22 @@ interface InputProps {
   isError: boolean;
 }
 
-export const Input = ({ placeholder, type, ...props }: InputProps) => {
+export const Input = ({
+  placeholder,
+  type,
+  errorMessage,
+  isError,
+  ...props
+}: InputProps) => {
   return (
     <InputContainer>
-      <StyledModalInput type={type} placeholder={placeholder} {...props} />
+      <StyledModalInput
+        $isError={isError}
+        type={type}
+        placeholder={placeholder}
+        {...props}
+      />
+      {isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </InputContainer>
   );
 };
