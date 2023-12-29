@@ -1,20 +1,17 @@
+// Cards.tsx
+
 import React, { useState } from "react";
-import { styled } from "@mui/system";
-import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
+import { StyledCard, DateOverlay, ExpandMoreStyled } from "./Cards.style";
 
 interface IGetListProps {
   state: string;
@@ -29,39 +26,6 @@ interface IGetListProps {
   phoneNumber: [mobile: number, phone: number];
   contactName: string;
 }
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-}));
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  position: "relative",
-  maxWidth: 345,
-  marginTop: 3,
-  borderRadius: "30px",
-  overflow: "hidden",
-  transition: "transform 0.3s, border 0.3s",
-  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-
-  "&:hover, &:active, &:focus": {
-    border: "2px solid #3f51b5",
-    transform: "scale(1.05)",
-  },
-}));
-
-const DateOverlay = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: theme.spacing(1),
-  left: theme.spacing(1),
-  color: "white",
-  fontWeight: "bold",
-  fontSize: "1.2rem",
-  zIndex: 1,
-}));
 
 const Cards = ({
   state,
@@ -107,14 +71,14 @@ const Cards = ({
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <ExpandMore
+        <ExpandMoreStyled
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >
           <ExpandMoreIcon />
-        </ExpandMore>
+        </ExpandMoreStyled>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
