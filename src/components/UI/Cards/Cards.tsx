@@ -1,5 +1,3 @@
-// Cards.tsx
-
 import React, { useState } from "react";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -58,10 +56,9 @@ const Cards = ({
         <Typography variant="subtitle1">September 14, 2016</Typography>
       </DateOverlay>
       <CardContent>
-        <CardHeader title="Paella Dish" />
+        <CardHeader title={title} />
         <Typography variant="body2" color="text.secondary">
-          "Квартира в Джумейра Вилладж Серкл (ДЖВС)，ДжейВиСи Дистрикт 10,
-          Плаззо Хайтс, 1 спальня, 7499 AED - 6030023"
+         {price}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
