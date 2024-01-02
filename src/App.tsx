@@ -8,6 +8,7 @@ import GreetingPage from "./pages/GreetingPage/GreetingPage";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 
 const routerConfig = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const routerConfig = createBrowserRouter([
   {
     path: "/forgetpassword",
     element: <ForgetPasswordPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
   },
 ]);
 
