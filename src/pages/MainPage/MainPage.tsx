@@ -25,8 +25,8 @@ export const MainPage = () => {
   return (
     <Container>
       <Logo />
-      {(Array.isArray(data?.results) ? data.results : []).map(
-        (result: IGetListProps) => (
+      {data?.results &&
+        data.results.map((result: IGetListProps) => (
           <Cards
             key={result.id}
             id={result.id}
@@ -42,8 +42,7 @@ export const MainPage = () => {
             phoneNumber={result.phoneNumber}
             contactName={result.contactName}
           />
-        )
-      )}
+        ))}
     </Container>
   );
 };

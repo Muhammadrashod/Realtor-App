@@ -3,7 +3,7 @@ import { baseUrl, xKey } from "../../utils/baseUrl";
 
 export interface RealtorResponse {
   count: number;
-  results: number;
+  results: [];
   total: number;
 }
 
