@@ -22,12 +22,10 @@ export const saleApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getForSale: builder.query<RealtorResponse, any>({
-      query: (locationExternalIDs) => ({
+    getForSale: builder.query<RealtorResponse, IRealtorRequestParams>({
+      query: (params) => ({
         url: "/properties/list",
-        params: {
-          locationExternalIDs,
-        },
+        params,
       }),
     }),
   }),

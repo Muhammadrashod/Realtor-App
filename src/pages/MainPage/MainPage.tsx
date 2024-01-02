@@ -3,6 +3,7 @@ import { Container } from "../../components/UI/Container/Container.style";
 import { useGetForSaleQuery } from "../../store/API/saleApi";
 import Cards from "../../components/UI/Cards/Cards";
 import Logo from "../../components/UI/Logo/Logo";
+import { IGetListProps } from "../../components/UI/Cards/Cards";
 
 export const MainPage = () => {
   const { data, error, isLoading } = useGetForSaleQuery({
@@ -24,15 +25,16 @@ export const MainPage = () => {
   return (
     <Container>
       <Logo />
-      {!!data?.results &&
-        data.results.map((result) => (
+      {(Array.isArray(data?.results) ? data.results : []).map(
+        (result: IGetListProps) => (
           <Cards
-            key={result.id} // Make sure to provide a unique key
+            key={result.id}
+            id={result.id}
             state={result.state}
             price={result.price}
             purpose={result.purpose}
             title={result.title}
-            location={[result.level, result.name]}
+            location={result.location}
             rooms={result.rooms}
             baths={result.baths}
             area={result.area}
@@ -40,7 +42,8 @@ export const MainPage = () => {
             phoneNumber={result.phoneNumber}
             contactName={result.contactName}
           />
-        ))}
+        )
+      )}
     </Container>
   );
 };
