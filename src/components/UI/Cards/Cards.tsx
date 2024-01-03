@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import type { CardItem } from "../../../store/API/saleApi";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -11,41 +12,35 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { StyledCard, DateOverlay, ExpandMoreStyled } from "./Cards.style";
 
-export interface IGetListProps {
-  id: number;
-  state: string;
-  price: number;
-  purpose: string;
-  title: string;
-  location: { level: number; name: string };
-  rooms: number;
-  baths: number;
-  area: number;
-  coverPhoto: { id: number; url: string; main: boolean };
-  phoneNumber: { mobile: number; phone: number };
-  contactName: string;
+export interface ICardsProps {
+ card: CardItem
 }
 
-const Cards = ({
-  id,
-  state,
-  price,
-  purpose,
-  title,
-  location,
-  rooms,
-  baths,
-  area,
-  coverPhoto,
-  phoneNumber,
-  contactName,
-}: IGetListProps) => {
+export const Cards = ({
+ card,
+}: ICardsProps) => {
   const [expanded, setExpanded] = useState(false);
-
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const {
+    id,
+    state,
+    price,
+    purpose,
+    title,
+    location,
+    rooms,
+    baths,
+    area,
+    coverPhoto,
+    phoneNumber,
+    contactName,
+  } = card
+  
+  
   return (
     <StyledCard>
       <CardMedia
@@ -76,7 +71,7 @@ const Cards = ({
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-        >
+          >
           <ExpandMoreIcon />
         </ExpandMoreStyled>
       </CardActions>
@@ -94,5 +89,6 @@ const Cards = ({
     </StyledCard>
   );
 };
+
 
 export default Cards;

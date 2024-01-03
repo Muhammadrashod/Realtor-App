@@ -1,6 +1,20 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl, xKey } from "../../utils/baseUrl";
 
+export interface CardItem {
+  id: number;
+  state: string;
+  price: number;
+  purpose: string;
+  title: string;
+  location: { level: number; name: string };
+  rooms: number;
+  baths: number;
+  area: number;
+  coverPhoto: { id: number; url: string; main: boolean };
+  phoneNumber: { mobile: number; phone: number };
+  contactName: string;
+}
 export interface RealtorResponse {
   count: number;
   results: [];

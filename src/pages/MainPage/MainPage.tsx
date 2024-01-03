@@ -1,9 +1,8 @@
 import React from "react";
 import { Container } from "../../components/UI/Container/Container.style";
-import { useGetForSaleQuery } from "../../store/API/saleApi";
+import { CardItem, useGetForSaleQuery } from "../../store/API/saleApi";
 import Cards from "../../components/UI/Cards/Cards";
 import Logo from "../../components/UI/Logo/Logo";
-import { IGetListProps } from "../../components/UI/Cards/Cards";
 
 export const MainPage = () => {
   const { data, error, isLoading } = useGetForSaleQuery({
@@ -26,21 +25,10 @@ export const MainPage = () => {
     <Container>
       <Logo />
       {data?.results &&
-        data.results.map((result: IGetListProps) => (
+        data.results.map((card: CardItem) => (
           <Cards
-            key={result.id}
-            id={result.id}
-            state={result.state}
-            price={result.price}
-            purpose={result.purpose}
-            title={result.title}
-            location={result.location}
-            rooms={result.rooms}
-            baths={result.baths}
-            area={result.area}
-            coverPhoto={result.coverPhoto}
-            phoneNumber={result.phoneNumber}
-            contactName={result.contactName}
+            key={card.id}
+            card={card}           
           />
         ))}
     </Container>
