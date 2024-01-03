@@ -58,7 +58,7 @@ export const LoginPage = () => {
 
       console.log("Form Data:", formData);
 
-      navigate("/main");
+      navigate("/profile");
     }
   };
 

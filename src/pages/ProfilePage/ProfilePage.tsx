@@ -12,6 +12,12 @@ import {
 import { Heading } from "../../components/Typography/Heading";
 
 export const ProfilePage = () => {
+  const storedDataString = localStorage.getItem("registrationFormData");
+  const storedData = storedDataString ? JSON.parse(storedDataString) : null;
+
+  const username = storedData?.username || "N/A";
+  const useremail = storedData?.useremail || "N/A";
+
   return (
     <StyledProfilePage>
       <Logo />
@@ -25,16 +31,8 @@ export const ProfilePage = () => {
       </IconContainer>
       <InfoContainer>
         <InfoText>
-          <Heading
-            headingText={`Name: ${localStorage.getItem(
-              "registrationFormData"
-            )}`}
-          />
-          <Heading
-            headingText={`Email: ${localStorage.getItem(
-              "loginFormData" || "registrationFormData"
-            )}`}
-          />
+          <Heading headingText={`Username: ${username}`} />
+          <Heading headingText={`Email: ${useremail}`} />
         </InfoText>
       </InfoContainer>
     </StyledProfilePage>

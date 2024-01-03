@@ -61,7 +61,7 @@ export const RegistrationPage = () => {
 
       console.log("Form Data:", formData);
 
-      navigate("/main");
+      navigate("/profile");
     }
   };
 

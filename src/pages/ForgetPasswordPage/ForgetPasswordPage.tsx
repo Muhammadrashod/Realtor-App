@@ -81,7 +81,7 @@ export const ForgetPasswordPage = () => {
 
   const goToNextPage = () => {
     if (Object.keys(errors).length === 0) {
-      navigate("/main");
+      navigate("/profile");
     }
   };
 
