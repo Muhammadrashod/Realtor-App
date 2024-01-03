@@ -1,5 +1,3 @@
-// ProfilePage.tsx
-
 import React from "react";
 import Logo from "../../components/UI/Logo/Logo";
 import IconButton from "@mui/material/IconButton";
