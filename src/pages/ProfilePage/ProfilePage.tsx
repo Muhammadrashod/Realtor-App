@@ -9,6 +9,7 @@ import {
   InfoContainer,
   InfoText,
 } from "./ProfilePage.style";
+import { Heading } from "../../components/Typography/Heading";
 
 export const ProfilePage = () => {
   return (
@@ -24,8 +25,16 @@ export const ProfilePage = () => {
       </IconContainer>
       <InfoContainer>
         <InfoText>
-          <p>Name: {localStorage.getItem("registrationFormData")}</p>
-          <p>Email: {localStorage.getItem("loginFormData")}</p>
+          <Heading
+            headingText={`Name: ${localStorage.getItem(
+              "registrationFormData"
+            )}`}
+          />
+          <Heading
+            headingText={`Email: ${localStorage.getItem(
+              "loginFormData" || "registrationFormData"
+            )}`}
+          />
         </InfoText>
       </InfoContainer>
     </StyledProfilePage>
