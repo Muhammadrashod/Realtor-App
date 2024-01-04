@@ -26,10 +26,7 @@ export const MainPage = () => {
       <Logo />
       {data?.results &&
         data.results.map((card: CardItem) => (
-          <Cards
-            key={card.id}
-            card={card}           
-          />
+          <Cards key={card.id} card={card} />
         ))}
     </Container>
   );

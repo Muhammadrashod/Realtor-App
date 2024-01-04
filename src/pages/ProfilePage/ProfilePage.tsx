@@ -17,10 +17,11 @@ import { Container } from "../../components/UI/Container/Container.style";
 
 export const ProfilePage = () => {
   const storedDataString = localStorage.getItem("registrationFormData");
+
   const storedData = storedDataString ? JSON.parse(storedDataString) : null;
 
-  const username = storedData?.username || "N/A";
-  const useremail = storedData?.useremail || "N/A";
+  const username = storedData ? storedData[0] : "N/A";
+  const useremail = storedData ? storedData[1] : "N/A";
 
   return (
     <Container>
@@ -31,8 +32,8 @@ export const ProfilePage = () => {
         </AvatarContainer>
         <InfoContainer>
           <InfoText>
-            <Heading headingText={`Username: ${username}`} />
-            <Heading headingText={`Email: ${useremail}`} />
+            <Heading headingText={`Имя: ${username}`} />
+            <Heading headingText={`Почта: ${useremail}`} />
           </InfoText>
         </InfoContainer>
         <IconContainer>

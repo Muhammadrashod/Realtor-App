@@ -13,14 +13,12 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { StyledCard, DateOverlay, ExpandMoreStyled } from "./Cards.style";
 
 export interface ICardsProps {
- card: CardItem
+  card: CardItem;
 }
 
-export const Cards = ({
- card,
-}: ICardsProps) => {
+export const Cards = ({ card }: ICardsProps) => {
   const [expanded, setExpanded] = useState(false);
-  
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -30,7 +28,7 @@ export const Cards = ({
     state,
     price,
     purpose,
-    title,
+    title_13,
     location,
     rooms,
     baths,
@@ -38,9 +36,8 @@ export const Cards = ({
     coverPhoto,
     phoneNumber,
     contactName,
-  } = card
-  
-  
+  } = card;
+
   return (
     <StyledCard>
       <CardMedia
@@ -54,7 +51,7 @@ export const Cards = ({
         <Typography variant="subtitle1">{state}</Typography>
       </DateOverlay>
       <CardContent>
-        <CardHeader title={title} />
+        <CardHeader title={title_13} />
         <Typography variant="body2" color="text.secondary">
           {price}
         </Typography>
@@ -71,7 +68,7 @@ export const Cards = ({
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-          >
+        >
           <ExpandMoreIcon />
         </ExpandMoreStyled>
       </CardActions>
@@ -81,14 +78,11 @@ export const Cards = ({
           <Typography paragraph>{purpose}</Typography>
           <Typography paragraph>{rooms}</Typography>
           <Typography paragraph>{area}</Typography>
-          <Typography>
-           {contactName}
-          </Typography>
+          <Typography>{contactName}</Typography>
         </CardContent>
       </Collapse>
     </StyledCard>
   );
 };
-
 
 export default Cards;
