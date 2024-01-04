@@ -11,9 +11,12 @@ import {
   IconContainer,
   InfoContainer,
   InfoText,
+  HeadingContainer,
+  AvatarTextContainer,
 } from "./ProfilePage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { Container } from "../../components/UI/Container/Container.style";
+import { MiniAvatar } from "./ProfilePage.style";
 
 export const ProfilePage = () => {
   const storedDataString = localStorage.getItem("registrationFormData");
@@ -26,6 +29,14 @@ export const ProfilePage = () => {
   return (
     <Container>
       <Logo />
+      <MiniAvatar/>
+      <AvatarTextContainer>
+      <Heading headingText={`${username}`} headingType="h2"/>
+      </AvatarTextContainer>
+      <HeadingContainer>
+        <Heading headingText="Ваш Профиль" headingType="h1" />
+      </HeadingContainer>
+      <Heading headingText={`Здравствуйте: ${username}`}/>
       <StyledProfilePage>
         <AvatarContainer>
           <StyledAvatar />
