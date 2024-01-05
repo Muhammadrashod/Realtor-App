@@ -5,7 +5,8 @@ import {
   GreetingContainer,
   GreetingTitle,
   ActionText,
-  ButtonContainer, // Add the ButtonContainer import
+  ButtonContainer,
+  TitleContainer, // Add the ButtonContainer import
 } from "./GreetingPage.style";
 import Logo from "../../components/UI/Logo/Logo";
 import { LinkButton } from "../../components/UI/LinkButton";
@@ -15,7 +16,9 @@ const GreetingPage: React.FC = () => {
     <>
       <Logo />
       <GreetingContainer>
+        <TitleContainer>
         <GreetingTitle>Добро Пожаловать</GreetingTitle>
+        </TitleContainer>
         <ActionText>Выберите Действие</ActionText>
         <ButtonContainer>
           <LinkButton path="/login" buttonText="Залогиниться" />

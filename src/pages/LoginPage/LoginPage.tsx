@@ -13,11 +13,13 @@ import { RegistrationInfo } from "../../components/UI/RegistartionInfo/Reagistar
 import Logo from "../../components/UI/Logo/Logo";
 
 interface ILoginForm {
+  username: string;
   useremail: string;
   userpassword: string;
 }
 
 const loginFormSchema = yup.object({
+  username: yup.string().required("Обязательное поле!"),
   useremail: yup.string().email().required("Обязательное поле!"),
   userpassword: yup
     .string()
@@ -35,6 +37,7 @@ export const LoginPage = () => {
   } = useForm<ILoginForm>({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
+      username: "",
       useremail: "",
       userpassword: "",
     },
@@ -46,6 +49,7 @@ export const LoginPage = () => {
     const storedData = localStorage.getItem("loginFormData");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
+      setValue("useremail", parsedData.username);
       setValue("useremail", parsedData.useremail);
       setValue("userpassword", parsedData.userpassword);
     }
@@ -53,7 +57,7 @@ export const LoginPage = () => {
 
   const goToNextPage = () => {
     if (Object.keys(errors).length === 0) {
-      const formData = getValues(["useremail", "userpassword"]);
+      const formData = getValues(["username", "useremail", "userpassword"]);
       localStorage.setItem("loginFormData", JSON.stringify(formData));
 
       console.log("Form Data:", formData);
@@ -73,6 +77,19 @@ export const LoginPage = () => {
             goToNextPage();
           })}
         >
+          <Controller
+            name="username"
+            control={control}
+            render={({ field }) => (
+              <Input
+                isError={errors.username ? true : false}
+                errorMessage={errors.username?.message}
+                type="text"
+                placeholder="Имя"
+                {...field}
+              />
+            )}
+          />
           <Controller
             name="useremail"
             control={control}

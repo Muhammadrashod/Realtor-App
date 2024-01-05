@@ -19,12 +19,12 @@ import { Container } from "../../components/UI/Container/Container.style";
 import { MiniAvatar } from "./ProfilePage.style";
 
 export const ProfilePage = () => {
-  const storedDataString = localStorage.getItem("registrationFormData");
+  const storedDataString = localStorage.getItem("registrationFormData" || "loginFormData");
 
   const storedData = storedDataString ? JSON.parse(storedDataString) : null;
 
   const username = storedData ? storedData[0] : "N/A";
-  const useremail = storedData ? storedData[1] : "N/A";
+  const useremail = storedData ? storedData[2] : "N/A";
 
   return (
     <Container>

@@ -13,12 +13,14 @@ import { LoginInfo } from "../../components/UI/LoginInfo/LoginInfo";
 
 interface IRegistrationForm {
   username: string;
+  userage: string;
   useremail: string;
   userpassword: string;
 }
 
 const registrationFormSchema = yup.object({
   username: yup.string().required("Обязательное поле!"),
+  userage: yup.string().required("Обязательное поле!"),
   useremail: yup.string().email().required("Обязательное поле!"),
   userpassword: yup
     .string()
@@ -37,6 +39,7 @@ export const RegistrationPage = () => {
     resolver: yupResolver(registrationFormSchema),
     defaultValues: {
       username: "",
+      userage: "",
       useremail: "",
       userpassword: "",
     },
@@ -49,6 +52,7 @@ export const RegistrationPage = () => {
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       setValue("username", parsedData.username);
+      setValue("username", parsedData.userage);
       setValue("useremail", parsedData.useremail);
       setValue("userpassword", parsedData.userpassword);
     }
@@ -56,7 +60,7 @@ export const RegistrationPage = () => {
 
   const goToNextPage = () => {
     if (Object.keys(errors).length === 0) {
-      const formData = getValues(["username", "useremail", "userpassword"]);
+      const formData = getValues(["username", "userage", "useremail", "userpassword"]);
       localStorage.setItem("registrationFormData", JSON.stringify(formData));
 
       console.log("Form Data:", formData);
@@ -85,6 +89,19 @@ export const RegistrationPage = () => {
                 errorMessage={errors.username?.message}
                 type="text"
                 placeholder="Имя"
+                {...field}
+              />
+            )}
+          />
+          <Controller
+            name="userage"
+            control={control}
+            render={({ field }) => (
+              <Input
+                isError={errors.userage ? true : false}
+                errorMessage={errors.userage?.message}
+                type="number"
+                placeholder="Возраст"
                 {...field}
               />
             )}

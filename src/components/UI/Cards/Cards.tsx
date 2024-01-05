@@ -77,6 +77,7 @@ export const Cards = ({ card }: ICardsProps) => {
           <Typography paragraph>Details:</Typography>
           <Typography paragraph>{purpose}</Typography>
           <Typography paragraph>{rooms}</Typography>
+          <Typography paragraph>{baths}</Typography>
           <Typography paragraph>{area}</Typography>
           <Typography>{contactName}</Typography>
         </CardContent>
