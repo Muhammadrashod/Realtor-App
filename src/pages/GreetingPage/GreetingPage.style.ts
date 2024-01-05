@@ -24,7 +24,7 @@ h1::before {
 
   h1:hover::before {
     transform: scaleX(1);
-    transform-origin: bottom left;
+    transform-origin: bottom left;  
   }
 
   h1::before {

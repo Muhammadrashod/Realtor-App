@@ -6,13 +6,13 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Settings } from "@mui/icons-material";
 import {
   StyledProfilePage,
-  AvatarContainer,
   StyledAvatar,
   IconContainer,
   InfoContainer,
   InfoText,
   HeadingContainer,
   AvatarTextContainer,
+  AvatarContainer,
 } from "./ProfilePage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { Container } from "../../components/UI/Container/Container.style";
