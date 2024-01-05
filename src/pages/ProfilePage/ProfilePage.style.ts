@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Avatar as MuiAvatar } from "@mui/material";
 import "../../components/UI/FadeIn/FadeInAnimation.css";
 
+
 export const StyledProfilePage = styled.div`
   position: relative;
   box-shadow: 0 0 10px #e3e3e3;
@@ -17,13 +18,6 @@ export const StyledProfilePage = styled.div`
 `;
 
 export const AvatarContainer = styled.div`
-  position: absolute;
-  top: -50px; /* Adjust the distance above the container */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
-  height: 75px;
-  overflow: hidden;
 `;
 
 export const AvatarTextContainer = styled.div`

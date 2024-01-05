@@ -1,5 +1,3 @@
-/* FadeInAnimation.css */
-
 @keyframes fadeIn {
     from {
       opacity: 0;
@@ -12,6 +10,6 @@
   }
   
   .fade-in {
-    animation: fadeIn 2s ease-out forwards; /* Increased duration to 2s */
+    animation: fadeIn 2s ease-out forwards; 
   }
   

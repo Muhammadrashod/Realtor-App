@@ -11,6 +11,7 @@ export const GreetingContainer = styled.div`
   align-items: center;
   opacity: 0;
   animation: fadeIn 2.5s ease-out forwards;
+  margin-top: 88px;
 `;
 
 export const TitleContainer = styled.div`
@@ -50,7 +51,7 @@ h1::before {
 export const GreetingTitle = styled.h1`
   font-size: 76px;
   color: black;
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 `;
 
 export const ActionText = styled.p`

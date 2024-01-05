@@ -68,7 +68,6 @@ export const LoginPage = () => {
 
   return (
     <Container>
-      <Logo />
       <StyledLoginPage>
         <Heading headingText="Авторизация" headingType="h1" />
         <form

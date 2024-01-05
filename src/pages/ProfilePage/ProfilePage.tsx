@@ -6,13 +6,13 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Settings } from "@mui/icons-material";
 import {
   StyledProfilePage,
+  AvatarContainer,
   StyledAvatar,
   IconContainer,
   InfoContainer,
   InfoText,
   HeadingContainer,
   AvatarTextContainer,
-  AvatarContainer,
 } from "./ProfilePage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { Container } from "../../components/UI/Container/Container.style";
@@ -30,6 +30,9 @@ export const ProfilePage = () => {
     <Container>
       <Logo />
       <MiniAvatar/>
+        <AvatarContainer>
+          <StyledAvatar />
+        </AvatarContainer>
       <AvatarTextContainer>
       <Heading headingText={`${username}`} headingType="h3"/>
       </AvatarTextContainer>
@@ -37,9 +40,6 @@ export const ProfilePage = () => {
         <Heading headingText="Ваш Профиль" headingType="h1" />
       </HeadingContainer>
        <StyledProfilePage> 
-        <AvatarContainer>
-          <StyledAvatar />
-        </AvatarContainer>
         <InfoContainer>
           <InfoText>
             <Heading headingText={`Имя: ${username}`} />

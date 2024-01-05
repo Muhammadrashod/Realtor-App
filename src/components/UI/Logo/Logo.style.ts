@@ -1,5 +1,4 @@
 import { StyleSheet } from "aphrodite";
-
 interface LogoStylesProps {
   logoContainer: React.CSSProperties;
   logoImage: React.CSSProperties;
@@ -15,6 +14,7 @@ const LogoStyles: LogoStylesProps = StyleSheet.create({
     left: 0,
     margin: "10px",
     transition: "transform 0.3s ease",
+
     ":hover": {
       transform: "scale(1.1)",
     },

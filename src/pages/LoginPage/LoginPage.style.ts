@@ -6,15 +6,16 @@ export const StyledLoginPage = styled.div`
   border-radius: 20px;
   background-color: #fff;
   margin: 0 auto;
-  width: 80%;
-  max-width: 500px;
+  width: 80%; 
+  max-width: 400px; 
   text-align: center;
-  padding: 40px;
+  padding: 20px; 
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
+  margin-top: -100px;
 
   h1 {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   a {
@@ -29,6 +30,7 @@ export const StyledLoginPage = styled.div`
   }
 
   @media (max-width: 530px) {
-    width: 100%;
+    width: 90%; 
+    max-width: 100%;
   }
 `;
