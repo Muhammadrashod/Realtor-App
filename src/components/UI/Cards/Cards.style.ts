@@ -10,6 +10,7 @@ export const StyledCard = styled(Card)(({ theme }) => ({
   position: "relative",
   maxWidth: 345,
   marginTop: 3,
+  marginBottom: 30,
   borderRadius: "30px",
   overflow: "hidden",
   transition: "transform 0.3s, border 0.3s",

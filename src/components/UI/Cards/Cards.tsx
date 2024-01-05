@@ -46,7 +46,7 @@ export const Cards = ({
       />
 
       <DateOverlay>
-        <Typography variant="subtitle1">{state}</Typography>
+        <Typography variant="subtitle1">{title_13}</Typography>
       </DateOverlay>
       <CardContent>
         <CardHeader title={title_13} />
@@ -75,7 +75,7 @@ export const Cards = ({
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Details:</Typography>
+          <Typography paragraph>Детали:</Typography>
           <Typography paragraph>{purpose}</Typography>
           <Typography paragraph>{rooms}</Typography>
           <Typography paragraph>{baths}</Typography>
