@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { Avatar as MuiAvatar } from "@mui/material";
 import "../../components/UI/FadeIn/FadeInAnimation.css";
 
+
 export const StyledProfilePage = styled.div`
   position: relative;
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
-  background-color: #fff;
+  background: linear-gradient(to bottom, blueviolet 50%, black 50%);  height: 596px;
   margin: 0 auto;
-  width: 80%;
-  max-width: 500px;
+  width: 990px;
   text-align: center;
   padding: 40px;
   opacity: 0;
@@ -28,14 +28,14 @@ export const AvatarContainer = styled.div`
 `;
 
 export const AvatarTextContainer = styled.div`
- display: flex;
+  display: flex;
   align-items: center;
   position: absolute;
-  top: 8px;
-  left: 89%;
+  top: 12px;
+  left: 90.5%;
   transform: translateX(-50%);
   margin: 10px;
-`
+`;
 
 export const HeadingContainer = styled.div`
   display: flex;
@@ -84,7 +84,6 @@ export const StyledAvatar = styled(MuiAvatar)`
   top: 50%;
   transform: translateY(-50%);
 `;
-
 
 export const MiniAvatar = styled(MuiAvatar)`
   display: flex;

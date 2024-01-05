@@ -4,25 +4,25 @@ import { baseUrl, xKey } from "../../utils/baseUrl";
 export interface CardItem {
   id: number;
   state: string;
-  price: number;
+  price: string;
   purpose: string;
   title_13: string;
   location: { level: number; name: string };
-  rooms: number;
-  baths: number;
-  area: number;
+  rooms: string;
+  baths: string;
+  area: string;
   coverPhoto: { id: number; url: string; main: boolean };
   phoneNumber: { mobile: number; phone: number };
   contactName: string;
 }
 export interface RealtorResponse {
   count: number;
-  results: [];
+  hits: CardItem[];
   total: number;
 }
 
 export interface IRealtorRequestParams {
-  locationExternalIDs: string;
+  locationExternalIDs: any;
 }
 
 export const saleApi = createApi({
@@ -36,10 +36,12 @@ export const saleApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getForSale: builder.query<RealtorResponse, IRealtorRequestParams>({
-      query: (params) => ({
+    getForSale: builder.query<RealtorResponse, any>({
+      query: (locationExternalIDs) => ({
         url: "/properties/list",
-        params,
+        params: {
+          locationExternalIDs
+        },
       }),
     }),
   }),

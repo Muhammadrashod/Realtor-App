@@ -35,10 +35,6 @@ const routerConfig = createBrowserRouter([
     path: "/profile",
     element: <ProfilePage />,
   },
-  {
-    path: "/prof",
-    element: <ProfilePage />,
-  },
 ]);
 
 const App: React.FC = () => {

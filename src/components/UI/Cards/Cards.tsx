@@ -16,27 +16,25 @@ export interface ICardsProps {
   card: CardItem;
 }
 
-export const Cards = ({ card }: ICardsProps) => {
+export const Cards = ({
+  id,
+  state,
+  price,
+  purpose,
+  title_13,
+  location,
+  rooms,
+  baths,
+  area,
+  coverPhoto,
+  phoneNumber,
+  contactName,
+}: CardItem) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  const {
-    id,
-    state,
-    price,
-    purpose,
-    title_13,
-    location,
-    rooms,
-    baths,
-    area,
-    coverPhoto,
-    phoneNumber,
-    contactName,
-  } = card;
 
   return (
     <StyledCard>
@@ -52,6 +50,9 @@ export const Cards = ({ card }: ICardsProps) => {
       </DateOverlay>
       <CardContent>
         <CardHeader title={title_13} />
+        <Typography variant="body2" color="text.secondary">
+          {title_13}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
           {price}
         </Typography>

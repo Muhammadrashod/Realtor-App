@@ -31,13 +31,12 @@ export const ProfilePage = () => {
       <Logo />
       <MiniAvatar/>
       <AvatarTextContainer>
-      <Heading headingText={`${username}`} headingType="h2"/>
+      <Heading headingText={`${username}`} headingType="h3"/>
       </AvatarTextContainer>
       <HeadingContainer>
         <Heading headingText="Ваш Профиль" headingType="h1" />
       </HeadingContainer>
-      <Heading headingText={`Здравствуйте: ${username}`}/>
-      <StyledProfilePage>
+       <StyledProfilePage> 
         <AvatarContainer>
           <StyledAvatar />
         </AvatarContainer>
@@ -58,7 +57,7 @@ export const ProfilePage = () => {
             <LogoutIcon />
           </IconButton>
         </IconContainer>
-      </StyledProfilePage>
+       </StyledProfilePage>
     </Container>
   );
 };
