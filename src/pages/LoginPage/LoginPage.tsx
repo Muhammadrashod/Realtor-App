@@ -10,7 +10,6 @@ import { StyledLoginPage } from "./LoginPage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { StyledLink } from "../../components/Typography/StyledLink";
 import { RegistrationInfo } from "../../components/UI/RegistartionInfo/ReagistartionInfo";
-import Logo from "../../components/UI/Logo/Logo";
 
 interface ILoginForm {
   username: string;
