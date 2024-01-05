@@ -21,7 +21,7 @@ export const Cards = ({
   state,
   price,
   purpose,
-  title_13,
+  title,
   location,
   rooms,
   baths,
@@ -46,12 +46,10 @@ export const Cards = ({
       />
 
       <DateOverlay>
-        <Typography variant="subtitle1">{title_13}</Typography>
       </DateOverlay>
       <CardContent>
-        <CardHeader title={title_13} />
-        <Typography variant="body2" color="text.secondary">
-          {title_13}
+        <Typography variant="body2" color="text.primary">
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {price}

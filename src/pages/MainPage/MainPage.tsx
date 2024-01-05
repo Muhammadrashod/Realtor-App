@@ -32,7 +32,7 @@ export const MainPage = () => {
               state={`Активность: ${card.state}`}
               price={`Цена: ${card.price}`}
               purpose={`Цель: ${card.purpose}`}
-              title_13={card.title_13}
+              title={card.title}
               location={{
                 level: 0,
                 name: "",
