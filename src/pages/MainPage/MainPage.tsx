@@ -5,9 +5,7 @@ import Cards from "../../components/UI/Cards/Cards";
 import Logo from "../../components/UI/Logo/Logo";
 
 export const MainPage = () => {
-  const { data, error, isLoading } = useGetForSaleQuery({
-    locationExternalIDs: "5002,6020",
-  });
+  const { data, error, isLoading } = useGetForSaleQuery({locationExternalIDs: "5002,6020"});
 
   if (data) {
     console.log(data);
