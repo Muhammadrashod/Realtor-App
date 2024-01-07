@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "../../UI/FadeIn/FadeInAnimation.css";
+import "../../../components/UI/FadeIn/FadeInAnimation.css";
 
 export const StyledHeader = styled.header`
   background-color: blueviolet;
@@ -12,9 +12,9 @@ export const StyledHeader = styled.header`
   
 `;
 
-export const AvatarContainer = styled.div`
+export const LogoContainer = styled.div`
+margin-left: 300px;
+height: 100%;
 display: flex;
-justify-content: end;
-margin-right: 10px;
-padding-top: 6px;
-`
+align-items: center;
+`;

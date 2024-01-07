@@ -8,9 +8,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../components/UI/Logo/Logo";
 import { LoginInfo } from "../../components/UI/LoginInfo/LoginInfo";
-
+import { Header } from "../../components/UI/Header/Header";
 interface IRegistrationForm {
   username: string;
   userage: string;
@@ -69,9 +68,9 @@ export const RegistrationPage = () => {
     }
   };
 
-  return (
+  return (<>
+      <Header />
     <Container>
-      <Logo />
       <StyledRegistrationPage>
         <Heading headingText="Регистрация" headingType="h1" />
         <form
@@ -85,27 +84,27 @@ export const RegistrationPage = () => {
             control={control}
             render={({ field }) => (
               <Input
-                isError={errors.username ? true : false}
-                errorMessage={errors.username?.message}
-                type="text"
-                placeholder="Имя"
-                {...field}
+              isError={errors.username ? true : false}
+              errorMessage={errors.username?.message}
+              type="text"
+              placeholder="Имя"
+              {...field}
               />
-            )}
-          />
+              )}
+              />
           <Controller
             name="userage"
             control={control}
             render={({ field }) => (
               <Input
-                isError={errors.userage ? true : false}
-                errorMessage={errors.userage?.message}
-                type="number"
-                placeholder="Возраст"
-                {...field}
+              isError={errors.userage ? true : false}
+              errorMessage={errors.userage?.message}
+              type="number"
+              placeholder="Возраст"
+              {...field}
               />
-            )}
-          />
+              )}
+              />
           <Controller
             name="useremail"
             control={control}
@@ -116,35 +115,36 @@ export const RegistrationPage = () => {
                 type="email"
                 placeholder="Почта"
                 {...field}
-              />
-            )}
-          />
+                />
+                )}
+                />
           <Controller
             name="userpassword"
             control={control}
             render={({ field }) => (
               <Input
-                isError={errors.userpassword ? true : false}
-                errorMessage={errors.userpassword?.message}
-                type="password"
-                placeholder="Пароль"
-                {...field}
+              isError={errors.userpassword ? true : false}
+              errorMessage={errors.userpassword?.message}
+              type="password"
+              placeholder="Пароль"
+              {...field}
               />
-            )}
-          />
+              )}
+              />
           <Button
             disabled={!!Object.keys(errors).length}
             isPrimary
             type="submit"
             buttonText="Зарегистрироваться"
-          />
+            />
         </form>
         <LoginInfo
           question="У вас есть аккаунт?"
           linkLabel="Войти"
           linkURL="/login"
-        />
+          />
       </StyledRegistrationPage>
     </Container>
+          </>
   );
 };

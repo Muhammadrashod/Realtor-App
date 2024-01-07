@@ -10,6 +10,7 @@ import { StyledLoginPage } from "./LoginPage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { StyledLink } from "../../components/Typography/StyledLink";
 import { RegistrationInfo } from "../../components/UI/RegistartionInfo/ReagistartionInfo";
+import { Header } from "../../components/UI/Header/Header";
 
 interface ILoginForm {
   username: string;
@@ -66,68 +67,71 @@ export const LoginPage = () => {
   };
 
   return (
-    <Container>
-      <StyledLoginPage>
-        <Heading headingText="Авторизация" headingType="h1" />
-        <form
-          onSubmit={handleSubmit((data) => {
-            console.table(data);
-            goToNextPage();
-          })}
-        >
-          <Controller
-            name="username"
-            control={control}
-            render={({ field }) => (
-              <Input
-                isError={errors.username ? true : false}
-                errorMessage={errors.username?.message}
-                type="text"
-                placeholder="Имя"
-                {...field}
-              />
-            )}
+    <>
+      <Header />
+      <Container>
+        <StyledLoginPage>
+          <Heading headingText="Авторизация" headingType="h1" />
+          <form
+            onSubmit={handleSubmit((data) => {
+              console.table(data);
+              goToNextPage();
+            })}
+          >
+            <Controller
+              name="username"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  isError={errors.username ? true : false}
+                  errorMessage={errors.username?.message}
+                  type="text"
+                  placeholder="Имя"
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              name="useremail"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  isError={errors.useremail ? true : false}
+                  errorMessage={errors.useremail?.message}
+                  type="email"
+                  placeholder="Почта"
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              name="userpassword"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  isError={errors.userpassword ? true : false}
+                  errorMessage={errors.userpassword?.message}
+                  type="password"
+                  placeholder="Пароль"
+                  {...field}
+                />
+              )}
+            />
+            <Button
+              disabled={!!Object.keys(errors).length}
+              isPrimary
+              type="submit"
+              buttonText="Войти"
+            />
+          </form>
+          <StyledLink to="/forgetpassword" linkText="Забыли пароль?" />
+          <RegistrationInfo
+            question="У вас нет аккаунта?"
+            linkLabel="Зарегистрироваться"
+            linkURL="/registration"
           />
-          <Controller
-            name="useremail"
-            control={control}
-            render={({ field }) => (
-              <Input
-                isError={errors.useremail ? true : false}
-                errorMessage={errors.useremail?.message}
-                type="email"
-                placeholder="Почта"
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="userpassword"
-            control={control}
-            render={({ field }) => (
-              <Input
-                isError={errors.userpassword ? true : false}
-                errorMessage={errors.userpassword?.message}
-                type="password"
-                placeholder="Пароль"
-                {...field}
-              />
-            )}
-          />
-          <Button
-            disabled={!!Object.keys(errors).length}
-            isPrimary
-            type="submit"
-            buttonText="Войти"
-          />
-        </form>
-        <StyledLink to="/forgetpassword" linkText="Забыли пароль?" />
-        <RegistrationInfo
-          question="У вас нет аккаунта?"
-          linkLabel="Зарегистрироваться"
-          linkURL="/registration"
-        />
-      </StyledLoginPage>
-    </Container>
+        </StyledLoginPage>
+      </Container>
+    </>
   );
 };

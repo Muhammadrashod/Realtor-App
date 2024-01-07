@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../components/UI/Logo/Logo";
+import { Header } from "../../components/UI/Header/Header";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -27,8 +27,9 @@ export const ProfilePage = () => {
   const useremail = storedData ? storedData[2] : "N/A";
 
   return (
+    <>
+      <Header />
     <Container>
-      <Logo />
       <MiniAvatar/>
         <AvatarContainer>
           <StyledAvatar />
@@ -59,5 +60,6 @@ export const ProfilePage = () => {
         </IconContainer>
        </StyledProfilePage>
     </Container>
+    </>
   );
 };

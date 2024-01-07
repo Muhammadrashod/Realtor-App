@@ -9,7 +9,6 @@ import { MainPage } from "./pages/MainPage/MainPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
-import { Header } from "./components/UI/Header/Header";
 
 const routerConfig = createBrowserRouter([
   {
@@ -42,7 +41,6 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Font>
-        <Header />
         <RouterProvider router={routerConfig} />
       </Font>
     </Provider>

@@ -8,7 +8,6 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../components/UI/Logo/Logo";
 import Modal from "@mui/material/Modal";
 import { StyledModalInput } from "../../components/UI/Modal/ModalInput.style";
 import {
@@ -17,6 +16,7 @@ import {
   StyledForm,
   StyledModalContent,
 } from "../../components/UI/Modal/Modal.style";
+import { Header } from "../../components/UI/Header/Header";
 
 interface IForgetPasswordForm {
   userphone: string;
@@ -86,73 +86,75 @@ export const ForgetPasswordPage = () => {
   };
 
   return (
-    <Container>
-      <Logo />
-      <StyledForgetPasswordPage>
-        <Heading headingText="Забыли Пароль?" headingType="h1" />
-        <form onSubmit={handleSubmit(onRegistrationSubmit)}>
-          <Controller
-            name="userphone"
-            control={control}
-            render={({ field }) => (
-              <Input
-                isError={errors.userphone ? true : false}
-                type="text"
-                placeholder="Номер телефона"
-                errorMessage={errors.userphone?.message}
-                {...field}
-              />
-            )}
-          />
-          <Button
-            disabled={!!Object.keys(errors).length}
-            isPrimary
-            type="submit"
-            buttonText="Отправить"
-          />
-        </form>
-      </StyledForgetPasswordPage>
+    <>
+      <Header />
+      <Container>
+        <StyledForgetPasswordPage>
+          <Heading headingText="Забыли Пароль?" headingType="h1" />
+          <form onSubmit={handleSubmit(onRegistrationSubmit)}>
+            <Controller
+              name="userphone"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  isError={errors.userphone ? true : false}
+                  type="text"
+                  placeholder="Номер телефона"
+                  errorMessage={errors.userphone?.message}
+                  {...field}
+                />
+              )}
+            />
+            <Button
+              disabled={!!Object.keys(errors).length}
+              isPrimary
+              type="submit"
+              buttonText="Отправить"
+            />
+          </form>
+        </StyledForgetPasswordPage>
 
-      <Modal open={isModalOpen} onClose={handleModalClose}>
-        <StyledModalContainer>
-          <StyledModalContent>
-            <StyledForm
-              onSubmit={handleModalSubmit((data) => {
-                console.log(data);
-                goToNextPage();
-              })}
-            >
-              <>
-                <Heading
-                  headingText="Введите Полученный Код"
-                  headingType="h2"
-                />
-                <StyledInputDiv>
-                  <Controller
-                    name="verificationCode"
-                    control={modalControl}
-                    render={({ field }) => (
-                      <StyledModalInput
-                        type="text"
-                        placeholder="Введите Код"
-                        $isError={modalErrors.verificationCode ? true : false}
-                        {...field}
-                      />
-                    )}
+        <Modal open={isModalOpen} onClose={handleModalClose}>
+          <StyledModalContainer>
+            <StyledModalContent>
+              <StyledForm
+                onSubmit={handleModalSubmit((data) => {
+                  console.log(data);
+                  goToNextPage();
+                })}
+              >
+                <>
+                  <Heading
+                    headingText="Введите Полученный Код"
+                    headingType="h2"
                   />
-                </StyledInputDiv>
-                <Button
-                  disabled={!!Object.keys(errors).length}
-                  isPrimary
-                  type="submit"
-                  buttonText="Отправить"
-                  onClick={handleModalClose}
-                />
-              </>
-            </StyledForm>
-          </StyledModalContent>
-        </StyledModalContainer>
-      </Modal>
-    </Container>
+                  <StyledInputDiv>
+                    <Controller
+                      name="verificationCode"
+                      control={modalControl}
+                      render={({ field }) => (
+                        <StyledModalInput
+                          type="text"
+                          placeholder="Введите Код"
+                          $isError={modalErrors.verificationCode ? true : false}
+                          {...field}
+                        />
+                      )}
+                    />
+                  </StyledInputDiv>
+                  <Button
+                    disabled={!!Object.keys(errors).length}
+                    isPrimary
+                    type="submit"
+                    buttonText="Отправить"
+                    onClick={handleModalClose}
+                  />
+                </>
+              </StyledForm>
+            </StyledModalContent>
+          </StyledModalContainer>
+        </Modal>
+      </Container>
+    </>
   );
 };

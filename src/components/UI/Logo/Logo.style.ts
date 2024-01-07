@@ -12,7 +12,8 @@ const LogoStyles: LogoStylesProps = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    margin: "10px",
+    marginLeft: "20px",
+    marginTop: "5px",
     transition: "transform 0.3s ease",
 
     ":hover": {
