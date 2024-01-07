@@ -9,10 +9,10 @@ export const StyledLoginPage = styled.div`
   width: 80%; 
   max-width: 400px; 
   text-align: center;
-  padding: 20px; 
+  padding: 30px; 
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
-  margin-top: -100px;
+  margin-top: -30px;
 
   h1 {
     margin-bottom: 30px;

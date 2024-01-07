@@ -1,5 +1,3 @@
-// GreetingPage.style.ts
-
 import styled from "styled-components";
 import "../../components/UI/FadeIn/FadeInAnimation.css";
 
@@ -11,21 +9,20 @@ export const GreetingContainer = styled.div`
   align-items: center;
   opacity: 0;
   animation: fadeIn 2.5s ease-out forwards;
-  margin-top: 88px;
 `;
 
 export const TitleContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-h1::before {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1::before {
     transform: scaleX(0);
     transform-origin: bottom right;
   }
 
   h1:hover::before {
     transform: scaleX(1);
-    transform-origin: bottom left;  
+    transform-origin: bottom left;
   }
 
   h1::before {
@@ -44,31 +41,42 @@ h1::before {
 
   h1 {
     position: relative;
-    margin-bottom: 50px;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 52px;
+    }
   }
 `;
 
 export const GreetingTitle = styled.h1`
-  font-size: 76px;
+  font-size: 88px;
   color: black;
+  margin-bottom: 20px;
+
+  @media (max-width: 600px) {
+    font-size: 44px;
     margin-bottom: 20px;
+  }
 `;
 
 export const ActionText = styled.p`
-  font-size: 28px;
+  font-size: 32px;
   color: #555;
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 28px;
   display: flex;
-  gap: 20px;
+  gap: 24px;
 `;
 
 export const LinkButton = styled.button`
   text-decoration: none;
-  padding: 15px 30px;
-  font-size: 16px;
+  padding: 15px 0; /* Adjust vertical padding as needed */
+  width: 150px; /* Set a fixed width for both buttons */
+  font-size: 20px;
   border: none;
   cursor: pointer;
   border-radius: 50px;

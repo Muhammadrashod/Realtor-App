@@ -3,7 +3,7 @@ import "../../../components/UI/FadeIn/FadeInAnimation.css";
 
 export const StyledHeader = styled.header`
   background-color: blueviolet;
-  height: 56px;
+  height: 60px;
   opacity: 90%;
   box-shadow: 0 0 10px blueviolet; 
   animation: fadeIn 3s ease-out forwards;
