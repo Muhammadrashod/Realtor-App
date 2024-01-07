@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import type { CardItem } from "../../../store/API/saleApi";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -45,8 +44,7 @@ export const Cards = ({
         alt="Property Image"
       />
 
-      <DateOverlay>
-      </DateOverlay>
+      <DateOverlay></DateOverlay>
       <CardContent>
         <Typography variant="body2" color="text.primary">
           {title}
@@ -74,10 +72,12 @@ export const Cards = ({
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Детали:</Typography>
-          <Typography paragraph>{purpose}</Typography>
           <Typography paragraph>{rooms}</Typography>
           <Typography paragraph>{baths}</Typography>
           <Typography paragraph>{area}</Typography>
+          <Typography paragraph>{location.level}</Typography>
+          <Typography paragraph>{location.name}</Typography>
+          <Typography paragraph>{phoneNumber.mobile}</Typography>
           <Typography>{contactName}</Typography>
         </CardContent>
       </Collapse>

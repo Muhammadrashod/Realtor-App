@@ -11,8 +11,10 @@ export interface CardItem {
   rooms: string;
   baths: string;
   area: string;
-  coverPhoto: { id: number; url: string; main: boolean };
-  phoneNumber: { mobile: number; phone: number };
+  coverPhoto: { id: number; url: string };
+  phoneNumber: {
+    mobile: string;
+  };
   contactName: string;
 }
 export interface RealtorResponse {
@@ -40,7 +42,7 @@ export const saleApi = createApi({
       query: (locationExternalIDs) => ({
         url: "/properties/list",
         params: {
-          locationExternalIDs
+          locationExternalIDs,
         },
       }),
     }),
