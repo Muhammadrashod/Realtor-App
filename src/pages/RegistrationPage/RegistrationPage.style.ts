@@ -13,6 +13,7 @@ export const StyledRegistrationPage = styled.div`
   padding: 40px;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
+  margin-top: -84px;
 
   h1 {
     margin-bottom: 50px;
@@ -30,6 +31,7 @@ export const StyledRegistrationPage = styled.div`
   }
 
   @media (max-width: 530px) {
-    width: 100%;
+    margin-top: 44px;
+    width: 70%;
   }
 `;

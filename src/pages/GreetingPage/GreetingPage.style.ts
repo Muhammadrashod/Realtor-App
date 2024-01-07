@@ -74,8 +74,8 @@ export const ButtonContainer = styled.div`
 
 export const LinkButton = styled.button`
   text-decoration: none;
-  padding: 15px 0; /* Adjust vertical padding as needed */
-  width: 150px; /* Set a fixed width for both buttons */
+  padding: 15px 0; 
+  width: 150px; 
   font-size: 20px;
   border: none;
   cursor: pointer;

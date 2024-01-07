@@ -19,8 +19,8 @@ const GreetingPage: React.FC = () => {
         </TitleContainer>
         <ActionText>Выберите Действие</ActionText>
         <ButtonContainer>
-          <LinkButton path="/login" buttonText="Sign In" />
-          <LinkButton path="/registration" buttonText="Sign Up" />
+          <LinkButton path="/login" buttonText="Залогиниться" />
+          <LinkButton path="/registration" buttonText="Зарегистрироваться" />
         </ButtonContainer>
       </GreetingContainer>
     </>

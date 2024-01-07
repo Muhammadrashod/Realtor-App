@@ -29,6 +29,7 @@ export const StyledForgetPasswordPage = styled.div`
   }
 
   @media (max-width: 530px) {
+    margin-top: 200px;
     width: 100%;
   }
 `;
