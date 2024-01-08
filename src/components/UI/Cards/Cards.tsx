@@ -37,7 +37,6 @@ export const Cards = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the current card is in favorites
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     setIsFavorite(favorites.includes(id));
   }, [id]);
@@ -47,7 +46,6 @@ export const Cards = ({
   };
 
   const handleToggleFavorite = () => {
-    // Toggle favorite status
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     const newFavorites = isFavorite
       ? favorites.filter((favId: number) => favId === id)
@@ -56,6 +54,13 @@ export const Cards = ({
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
     setIsFavorite(!isFavorite);
   };
+
+  console.log(
+    isFavorite
+      ? `Added card with ID ${id} from favorites.`
+      : `Removed card with ID ${id} to favorites.`
+  );
+  
 
   const handleGoToProfile = () => {
     navigate("/profile");
