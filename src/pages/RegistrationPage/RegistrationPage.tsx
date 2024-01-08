@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { LoginInfo } from "../../components/UI/LoginInfo/LoginInfo";
-import { Header } from "../../components/UI/Header/Header";
+import { GreetingHeader } from "../GreetingPage/GreetingHeader/GreetingHeader";
 interface IRegistrationForm {
   username: string;
   userage: string;
@@ -69,7 +69,7 @@ export const RegistrationPage = () => {
   };
 
   return (<>
-      <Header />
+      <GreetingHeader />
     <Container>
       <StyledRegistrationPage>
         <Heading headingText="Регистрация" headingType="h1" />

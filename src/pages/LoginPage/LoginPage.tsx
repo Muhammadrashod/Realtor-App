@@ -10,7 +10,7 @@ import { StyledLoginPage } from "./LoginPage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { StyledLink } from "../../components/Typography/StyledLink";
 import { RegistrationInfo } from "../../components/UI/RegistartionInfo/ReagistartionInfo";
-import { Header } from "../../components/UI/Header/Header";
+import { GreetingHeader } from "../GreetingPage/GreetingHeader/GreetingHeader";
 
 interface ILoginForm {
   username: string;
@@ -68,7 +68,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <Header />
+      <GreetingHeader />
       <Container>
         <StyledLoginPage>
           <Heading headingText="Авторизация" headingType="h1" />

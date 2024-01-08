@@ -16,7 +16,7 @@ import {
   StyledForm,
   StyledModalContent,
 } from "../../components/UI/Modal/Modal.style";
-import { Header } from "../../components/UI/Header/Header";
+import { GreetingHeader } from "../GreetingPage/GreetingHeader/GreetingHeader";
 
 interface IForgetPasswordForm {
   userphone: string;
@@ -87,7 +87,7 @@ export const ForgetPasswordPage = () => {
 
   return (
     <>
-      <Header />
+    <GreetingHeader />
       <Container>
         <StyledForgetPasswordPage>
           <Heading headingText="Забыли Пароль?" headingType="h1" />
