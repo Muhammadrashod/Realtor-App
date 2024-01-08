@@ -9,7 +9,8 @@ import { MainPage } from "./pages/MainPage/MainPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
-import { CardPage } from "./pages/CardPage/CardPage";
+// import { CardPage } from "./pages/CardPage/CardPage";
+import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
 
 const routerConfig = createBrowserRouter([
   {
@@ -36,13 +37,13 @@ const routerConfig = createBrowserRouter([
     path: "/profile",
     element: <ProfilePage />,
   },
-  {
-    path: "/card/:id",
-    element: <CardPage />,
-  },
+  // {
+  //   path: "/card/:id",
+  //   element: <CardPage />,
+  // },
   {
     path: "/favorites",
-    element: <></>,
+    element: <FavoritesPage />
   },
 ]);
 
