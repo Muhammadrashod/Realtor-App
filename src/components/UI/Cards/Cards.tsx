@@ -10,7 +10,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { StyledCard, DateOverlay, ExpandMoreStyled } from "./Cards.style";
-
+import ViewDayIcon from "@mui/icons-material/ViewDay";
+import { Tooltip } from "@mui/material";
 export interface ICardsProps {
   card: CardItem;
 }
@@ -54,12 +55,6 @@ export const Cards = ({
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
         <ExpandMoreStyled
           expand={expanded}
           onClick={handleExpandClick}
@@ -71,14 +66,24 @@ export const Cards = ({
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Детали:</Typography>
+          <Tooltip title="Добавить В Избранное">
+        <IconButton aria-label="Add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+          </Tooltip>
+          <Tooltip title="Открыть Карточку">
+        <IconButton aria-label="Go To Card">
+          <ViewDayIcon />
+        </IconButton>
+          </Tooltip>
+          {/* <Typography paragraph>Детали:</Typography>
           <Typography paragraph>{rooms}</Typography>
           <Typography paragraph>{baths}</Typography>
           <Typography paragraph>{area}</Typography>
           <Typography paragraph>{location.level}</Typography>
           <Typography paragraph>{location.name}</Typography>
           <Typography paragraph>{phoneNumber.mobile}</Typography>
-          <Typography>{contactName}</Typography>
+          <Typography>{contactName}</Typography> */}
         </CardContent>
       </Collapse>
     </StyledCard>
