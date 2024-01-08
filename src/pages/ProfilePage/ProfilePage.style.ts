@@ -4,18 +4,22 @@ import "../../components/UI/FadeIn/FadeInAnimation.css";
 
 
 export const StyledProfilePage = styled.div`
-  position: relative;
+  left: 0; /* Set to the left edge of the page */
+  position: fixed; /* Use fixed positioning to cover the left half */
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
   background: #fefefe;
-  margin: 0 auto;
-  width: 990px;
+  width: 48%; /* Set width to 50% to cover the left half */
+  height: 84%;
+  margin-top: -100px;
+  margin-left: 20px;
   text-align: center;
   padding: 40px;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
   overflow: hidden;
 `;
+
 
 export const AvatarContainer = styled.div`
 `;
@@ -24,8 +28,8 @@ export const AvatarTextContainer = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  top: 40px;
-  left: 90.5%;
+  top: 8px;
+  left: 93%;
   transform: translateX(-50%);
   margin: 10px;
 `;
@@ -38,6 +42,7 @@ export const HeadingContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   margin: 10px;
+  margin-top: -12px;
   h1::before {
     transform: scaleX(0);
     transform-origin: bottom right;

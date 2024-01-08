@@ -16,7 +16,6 @@ import {
 } from "./ProfilePage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { Container } from "../../components/UI/Container/Container.style";
-import { MiniAvatar } from "./ProfilePage.style";
 
 export const ProfilePage = () => {
   const storedDataString = localStorage.getItem("registrationFormData" || "loginFormData");
@@ -30,10 +29,9 @@ export const ProfilePage = () => {
     <>
       <Header />
     <Container>
-      <MiniAvatar/>
-        <AvatarContainer>
+        {/* <AvatarContainer>
           <StyledAvatar />
-        </AvatarContainer>
+        </AvatarContainer> */}
       <AvatarTextContainer>
       <Heading headingText={`${username}`} headingType="h3"/>
       </AvatarTextContainer>
