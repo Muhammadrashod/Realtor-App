@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import type { CardItem } from "../../../store/API/saleApi";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { StyledCard, DateOverlay, ExpandMoreStyled } from "./Cards.style";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ViewDayIcon from "@mui/icons-material/ViewDay";
 import { Tooltip } from "@mui/material";
+import { StyledCard, DateOverlay, ExpandMoreStyled } from "./Cards.style";
+
 export interface ICardsProps {
   card: CardItem;
 }
@@ -31,9 +33,32 @@ export const Cards = ({
   contactName,
 }: CardItem) => {
   const [expanded, setExpanded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the current card is in favorites
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    setIsFavorite(favorites.includes(id));
+  }, [id]);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleToggleFavorite = () => {
+    // Toggle favorite status
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const newFavorites = isFavorite
+      ? favorites.filter((favId: number) => favId === id)
+      : [...favorites, id];
+
+    localStorage.setItem("favorites", JSON.stringify(newFavorites));
+    setIsFavorite(!isFavorite);
+  };
+
+  const handleGoToProfile = () => {
+    navigate("/profile");
   };
 
   return (
@@ -44,7 +69,6 @@ export const Cards = ({
         image={coverPhoto.url}
         alt="Property Image"
       />
-
       <DateOverlay></DateOverlay>
       <CardContent>
         <Typography variant="body2" color="text.primary">
@@ -66,15 +90,20 @@ export const Cards = ({
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Tooltip title="Добавить В Избранное">
-        <IconButton aria-label="Add to favorites">
-          <FavoriteIcon />
-        </IconButton>
+          <Tooltip
+            title={isFavorite ? "Удалить С Избранных" : "Добавить В Избранные"}
+          >
+            <IconButton
+              aria-label="Add to favorites"
+              onClick={handleToggleFavorite}
+            >
+              {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </IconButton>
           </Tooltip>
           <Tooltip title="Открыть Карточку">
-        <IconButton aria-label="Go To Card">
-          <ViewDayIcon />
-        </IconButton>
+            <IconButton aria-label="Go To Card" onClick={handleGoToProfile}>
+              <ViewDayIcon />
+            </IconButton>
           </Tooltip>
           {/* <Typography paragraph>Детали:</Typography>
           <Typography paragraph>{rooms}</Typography>
