@@ -28,7 +28,7 @@ export interface FavoriteCardItem {
   baths: string;
   area: string;
   contactName: string;
-  coverPhoto: { id: number; url: string };
+  coverPhoto: { id: string; url: string };
   phoneNumber: {
     mobile: string;
   };

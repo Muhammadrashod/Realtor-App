@@ -50,7 +50,7 @@ export const FavoritesPage = () => {
                   rooms={`Комнаты: ${favoritecard.rooms}`}
                   baths={`Ванные Комнаты: ${favoritecard.baths}`}
                   area={`Площадь: ${favoritecard.area}`}
-                  coverPhoto={{
+                   coverPhoto={{
                     id: favoritecard.coverPhoto?.id || "", // Check if coverPhoto is defined
                     url: favoritecard.coverPhoto?.url || "", // Check if coverPhoto is defined
                   }}
