@@ -31,7 +31,6 @@ export const LoginPage = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-    getValues,
   } = useForm<ILoginForm>({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
@@ -39,7 +38,6 @@ export const LoginPage = () => {
       userpassword: "",
     },
   });
-  
 
   const navigate = useNavigate();
 
@@ -52,26 +50,17 @@ export const LoginPage = () => {
     }
   }, [setValue]);
 
-  const goToNextPage = () => {
-    const formData = getValues(["useremail", "userpassword"]);
-    const userKey = `${formData[0]}-${formData[1]}`;
+  const goToNextPage = (formData: ILoginForm) => {
+    const userKey = `${formData.useremail}-${formData.userpassword}`;
     const storedData = localStorage.getItem(userKey);
 
     if (storedData) {
-      const userData = JSON.parse(storedData);
-
-      if (userData.userpassword === formData[1]) {
-        console.log("Successfully logged in:", userData);
-        navigate("/profile");
-      } else {
-        console.error("Incorrect password");
-        // Handle incorrect password error
-        // Display error message under the password input
-      }
+      console.log("Successfully logged in:", storedData);
+      navigate("/profile");
     } else {
-      console.error("User not found");
-      // Handle user not found error
-      // Display error message under the email input
+      console.error("Incorrect email or password");
+      // Handle incorrect email or password error
+      // Display error message as needed
     }
   };
 
@@ -84,7 +73,7 @@ export const LoginPage = () => {
           <form
             onSubmit={handleSubmit((data) => {
               console.table(data);
-              goToNextPage();
+              goToNextPage(data);
             })}
           >
             <Controller
