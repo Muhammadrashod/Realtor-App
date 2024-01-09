@@ -5,6 +5,7 @@ import Cards from "../../components/UI/Cards/Cards";
 import { CardsContainer, StyledMainPage } from "./MainPage.style";
 import { Header } from "../../components/UI/Header/Header";
 import { Heading } from "../../components/Typography/Heading";
+import { Link } from "../../components/UI/Link/Link";
 
 export const MainPage = () => {
   const { data, error, isLoading } = useGetForSaleQuery("5002,6020");
@@ -26,6 +27,9 @@ export const MainPage = () => {
       <Header />
       <Container>
         <StyledMainPage>
+       <Link href="/main" text="Купить"/>
+       <Link href="/profile" text="Продать"/>
+       <Link href="/favorites" text="Избранные"/>
           <Heading headingText="Дома В Продаже" />
           <CardsContainer>
             {data?.hits &&

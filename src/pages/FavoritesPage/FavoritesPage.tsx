@@ -1,13 +1,35 @@
 import React from "react";
 import { Container } from "../../components/UI/Container/Container.style";
-import { CardItem } from "../../store/API/saleApi";
-import Cards from "../../components/UI/Cards/Cards";
+import {
+  FavoriteCardItem,
+  useGetExactCardQuery,
+} from "../../store/API/saleApi";
+import FavoriteCards from "../../components/UI/Cards/FavoriteCards";
 import { Header } from "../../components/UI/Header/Header";
 import { Heading } from "../../components/Typography/Heading";
-import { StyledFavoritesPage, FavoriteCardsContainer } from "./FavoritesPage.style";
+import {
+  StyledFavoritesPage,
+  FavoriteCardsContainer,
+} from "./FavoritesPage.style";
 
 export const FavoritesPage = () => {
+  const { data, error, isLoading } = useGetExactCardQuery("4937770");
+
+  if (data) {
+    console.log(data);
+  }
+
+  if (error) {
+    console.error(error);
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   const savedCards = localStorage.getItem("favorites");
+  const parsedSavedCards = savedCards ? JSON.parse(savedCards) : [];
+
+  console.log(savedCards);
 
   return (
     <>
@@ -16,28 +38,24 @@ export const FavoritesPage = () => {
         <StyledFavoritesPage>
           <Heading headingText="Ваши Избранные Предложения" />
           <FavoriteCardsContainer>
-            {localStorage?.savedCards &&
-              localStorage.savedCards.map((card: CardItem) => (
-                <Cards
-                  key={localStorage.id}
-                  id={card.id}
-                  state={`Активность: ${card.state}`}
-                  price={`Цена: ${card.price}`}
-                  purpose={`Цель: ${card.purpose}`}
-                  title={card.title}
-                  location={{
-                    level: card.location.level,
-                    name: card.location.name,
-                  }}
-                  rooms={`Количество Комнат: ${card.rooms}`}
-                  baths={`Количество Ванных Комнат: ${card.baths}`}
-                  area={`Площадь: ${card.area}`}
+            {data?.id &&
+              parsedSavedCards.map((favoritecard: FavoriteCardItem) => (
+                <FavoriteCards
+                  key={favoritecard.objectID} // Fix typo here
+                  objectID={favoritecard.objectID} // Assuming 'id' is the correct property
+                  state={`Активность: ${favoritecard.state}`}
+                  price={`Цена: ${favoritecard.price}`}
+                  purpose={`Цель: ${favoritecard.purpose}`}
+                  title={favoritecard.title}
+                  rooms={`Комнаты: ${favoritecard.rooms}`}
+                  baths={`Ванные Комнаты: ${favoritecard.baths}`}
+                  area={`Площадь: ${favoritecard.area}`}
                   coverPhoto={{
-                    id: card.coverPhoto.id,
-                    url: card.coverPhoto.url,
+                    id: favoritecard.coverPhoto?.id || "", // Check if coverPhoto is defined
+                    url: favoritecard.coverPhoto?.url || "", // Check if coverPhoto is defined
                   }}
-                  phoneNumber={card.phoneNumber}
-                  contactName={`Имя Продовца: ${card.contactName}`}
+                  phoneNumber={favoritecard.phoneNumber}
+                  contactName={`Имя Продовца: ${favoritecard.contactName}`}
                 />
               ))}
           </FavoriteCardsContainer>

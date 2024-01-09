@@ -17,14 +17,33 @@ export interface CardItem {
   };
   contactName: string;
 }
+
+export interface FavoriteCardItem {
+  objectID: number;
+  state: string;
+  price: string;
+  purpose: string;
+  title: string;
+  rooms: string;
+  baths: string;
+  area: string;
+  contactName: string;
+  coverPhoto: { id: number; url: string };
+  phoneNumber: {
+    mobile: string;
+  };
+}
+
 export interface RealtorResponse {
   count: number;
   hits: CardItem[];
   total: number;
+  id: CardItem[];
 }
 
 export interface IRealtorRequestParams {
   locationExternalIDs: any;
+  externalID: any;
 }
 
 export const saleApi = createApi({
@@ -46,7 +65,15 @@ export const saleApi = createApi({
         },
       }),
     }),
+    getExactCard: builder.query<RealtorResponse, any>({
+      query: (externalID) => ({
+        url: "/properties/detail",
+        params: {
+          externalID,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetForSaleQuery } = saleApi;
+export const { useGetForSaleQuery, useGetExactCardQuery } = saleApi;
