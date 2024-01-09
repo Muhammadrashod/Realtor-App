@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -11,6 +11,7 @@ import { Heading } from "../../components/Typography/Heading";
 import { StyledLink } from "../../components/Typography/StyledLink";
 import { RegistrationInfo } from "../../components/UI/RegistartionInfo/ReagistartionInfo";
 import { GreetingHeader } from "../GreetingPage/GreetingHeader/GreetingHeader";
+import { ErrorMessage } from "../../components/UI/Input/Input.style";
 
 interface ILoginForm {
   useremail: string;
@@ -39,6 +40,8 @@ export const LoginPage = () => {
     },
   });
 
+  const [loginError, setLoginError] = useState<string | null>(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,10 +58,10 @@ export const LoginPage = () => {
     const storedData = localStorage.getItem(userKey);
 
     if (storedData) {
-      console.log("Successfully logged in:", storedData);
+      console.log("Вы Успешно Вошли В Аккаунт", storedData);
       navigate("/profile");
     } else {
-      console.error("Incorrect email or password");
+      setLoginError("Неправильный Пользователь Или Пароль");
     }
   };
 
@@ -71,6 +74,7 @@ export const LoginPage = () => {
           <form
             onSubmit={handleSubmit((data) => {
               console.table(data);
+              setLoginError(null);
               goToNextPage(data);
             })}
           >
@@ -100,6 +104,7 @@ export const LoginPage = () => {
                 />
               )}
             />
+              {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
             <Button
               disabled={!!Object.keys(errors).length}
               isPrimary

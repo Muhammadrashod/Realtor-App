@@ -56,10 +56,9 @@ export const FavoriteCards = ({
 
   console.log(
     isFavorite
-      ? `Added card with ID ${objectID} from favorites.`
-      : `Removed card with ID ${objectID} to favorites.`
+    ? `Removed card with ID ${objectID} from favorites.`
+    : `Added card with ID ${objectID} to favorites.`
   );
-  
 
   const handleGoToProfile = () => {
     navigate("/profile");
@@ -95,13 +94,13 @@ export const FavoriteCards = ({
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Tooltip
-            title={isFavorite ? "Удалить С Избранных" : "Добавить В Избранные"}
+            title={isFavorite ? "Добавить В Избранные" : "Удалить С Избранных"}
           >
             <IconButton
               aria-label="Add to favorites"
               onClick={handleToggleFavorite}
             >
-              {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+              {isFavorite ? <FavoriteBorderIcon /> : <FavoriteIcon />}
             </IconButton>
           </Tooltip>
           <Tooltip title="Открыть Карточку">
@@ -109,14 +108,12 @@ export const FavoriteCards = ({
               <ViewDayIcon />
             </IconButton>
           </Tooltip>
-          {/* <Typography paragraph>Детали:</Typography>
+          <Typography paragraph>Детали:</Typography>
           <Typography paragraph>{rooms}</Typography>
           <Typography paragraph>{baths}</Typography>
           <Typography paragraph>{area}</Typography>
-          <Typography paragraph>{location.level}</Typography>
-          <Typography paragraph>{location.name}</Typography>
-          <Typography paragraph>{phoneNumber.mobile}</Typography>
-          <Typography>{contactName}</Typography> */}
+          <Typography paragraph>{phoneNumber?.mobile}</Typography>
+          <Typography>{contactName}</Typography>
         </CardContent>
       </Collapse>
     </StyledCard>

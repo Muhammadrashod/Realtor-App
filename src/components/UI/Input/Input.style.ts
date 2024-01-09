@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import "../FadeIn/FadeInAnimation.css";
 
 export const InputContainer = styled.div`
   margin-bottom: 20px;
@@ -7,6 +8,8 @@ export const InputContainer = styled.div`
 export const ErrorMessage = styled.p`
   color: red;
   margin-top: 10px;
+  margin-bottom: 10px;
+  animation: fadeIn 0.5s ease-out forwards;
 `;
 
 interface IStyledInputProps {
@@ -69,7 +72,7 @@ export const StyledInput = styled.input<IStyledInputProps>`
   }
 
   &:visited {
-    color: purple; /* Custom color for visited state */
+    color: purple; 
   }
 
   &::after {
