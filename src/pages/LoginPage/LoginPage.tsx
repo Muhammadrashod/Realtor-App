@@ -39,6 +39,7 @@ export const LoginPage = () => {
       userpassword: "",
     },
   });
+  
 
   const navigate = useNavigate();
 
@@ -46,20 +47,31 @@ export const LoginPage = () => {
     const storedData = localStorage.getItem("loginFormData");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
-      setValue("useremail", parsedData.username);
       setValue("useremail", parsedData.useremail);
       setValue("userpassword", parsedData.userpassword);
     }
   }, [setValue]);
 
   const goToNextPage = () => {
-    if (Object.keys(errors).length === 0) {
-      const formData = getValues(["useremail", "userpassword"]);
-      localStorage.setItem("loginFormData", JSON.stringify(formData));
+    const formData = getValues(["useremail", "userpassword"]);
+    const userKey = `${formData[0]}-${formData[1]}`;
+    const storedData = localStorage.getItem(userKey);
 
-      console.log("Form Data:", formData);
+    if (storedData) {
+      const userData = JSON.parse(storedData);
 
-      navigate("/profile");
+      if (userData.userpassword === formData[1]) {
+        console.log("Successfully logged in:", userData);
+        navigate("/profile");
+      } else {
+        console.error("Incorrect password");
+        // Handle incorrect password error
+        // Display error message under the password input
+      }
+    } else {
+      console.error("User not found");
+      // Handle user not found error
+      // Display error message under the email input
     }
   };
 
