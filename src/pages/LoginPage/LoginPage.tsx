@@ -59,8 +59,6 @@ export const LoginPage = () => {
       navigate("/profile");
     } else {
       console.error("Incorrect email or password");
-      // Handle incorrect email or password error
-      // Display error message as needed
     }
   };
 
