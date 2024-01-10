@@ -19,7 +19,7 @@ export interface CardItem {
 }
 
 export interface FavoriteCardItem {
-  objectID: number;
+  objectID?: number;
   state: string;
   price: string;
   purpose: string;

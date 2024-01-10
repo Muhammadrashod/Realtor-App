@@ -11,11 +11,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
   padding: 12px 15px;
   font-size: inherit;
   border-radius: 10px;
-  background-color: ${(props) => props.theme.colors.bgc};
+  background-color: ${(props) => props.theme.colors.primeColor};
   transition: 200ms;
   width: 100%;
   margin-bottom: 30px;
-  border-color: ${(props) => props.theme.colors.blueviolet};
+  border-color: ${(props) => props.theme.colors.primeColor};
 
   ${(props) =>
     props.isPrimary &&
@@ -38,7 +38,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     border-color: var(--disabledBgc)};
  `}
 
-  background-color: ${(props) => props.theme.colors.blueviolet};
+  background-color: ${(props) => props.theme.colors.primeColor};
   color: ${(props) => props.theme.colors.elemsBgc};
 
   &:disabled {

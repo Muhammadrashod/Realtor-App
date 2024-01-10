@@ -32,14 +32,29 @@ export const Cards = ({
   phoneNumber,
   contactName,
 }: CardItem) => {
+  const favouritesList = {
+    id,
+    state,
+    price,
+    purpose,
+    title,
+    location,
+    rooms,
+    baths,
+    area,
+    coverPhoto,
+    phoneNumber,
+    contactName,
+  };
+
   const [expanded, setExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-    setIsFavorite(favorites.includes(id));
-  }, [id]);
+    setIsFavorite(favorites.includes(favouritesList));
+  }, [favouritesList]);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -48,8 +63,10 @@ export const Cards = ({
   const handleToggleFavorite = () => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     const newFavorites = isFavorite
-      ? favorites.filter((favId: number) => favId === id)
-      : [...favorites, id];
+      ? favorites.filter(
+          (favId: any) => favId === favouritesList
+        )
+      : [...favorites, favouritesList];
 
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
     setIsFavorite(!isFavorite);
@@ -57,8 +74,8 @@ export const Cards = ({
 
   console.log(
     isFavorite
-      ? `Added card with ID ${id} from favorites.`
-      : `Removed card with ID ${id} to favorites.`
+      ? `Added card with ID ${id && state && purpose && rooms} from favorites.`
+      : `Removed card with ID ${id && state && purpose && rooms} to favorites.`
   );
 
   const handleGoToCard = () => {

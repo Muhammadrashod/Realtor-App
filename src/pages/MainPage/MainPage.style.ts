@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import "../../components/UI/FadeIn/FadeInAnimation.css";
 
-export const StyledMainPage = styled.div`
+
+type StyledProps = {
+  isPrimary?: boolean;
+  isSecondary?: boolean;
+};
+
+export const StyledMainPage = styled.div<StyledProps>`
+  background-color: ${(props) => props.theme.colors.bgc};
   animation: fadeIn 2.5s ease-out forwards;
 `;
 

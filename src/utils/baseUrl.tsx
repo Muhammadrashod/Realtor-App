@@ -1,2 +1,2 @@
 export const baseUrl = "https://bayut.p.rapidapi.com";
-export const xKey = '0edb7daa60msh1d95aeb2742ecbcp168a94jsn463033e9499b'
+export const xKey = 'd6bbc08f3fmsh9e92b6692921d51p134795jsn9289ffe5b820'

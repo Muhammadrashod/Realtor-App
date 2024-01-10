@@ -4,15 +4,13 @@ import type { FavoriteCardItem } from "../../../store/API/saleApi";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ViewDayIcon from "@mui/icons-material/ViewDay";
 import { Tooltip } from "@mui/material";
-import { StyledCard, DateOverlay, ExpandMoreStyled } from "./Cards.style";
+import { StyledCard, DateOverlay } from "./Cards.style";
 
 export interface ICardsProps {
   favoritecard: FavoriteCardItem;
@@ -31,7 +29,6 @@ export const FavoriteCards = ({
   phoneNumber,
   contactName,
 }: FavoriteCardItem) => {
-  const [expanded, setExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
 
@@ -39,10 +36,6 @@ export const FavoriteCards = ({
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     setIsFavorite(favorites.includes(objectID));
   }, [objectID]);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   const handleToggleFavorite = () => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -61,7 +54,7 @@ export const FavoriteCards = ({
   );
 
   const handleGoToProfile = () => {
-    navigate("/profile");
+    navigate(`/card/${objectID}`);
   };
 
   return (
@@ -82,16 +75,8 @@ export const FavoriteCards = ({
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <ExpandMoreStyled
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMoreStyled>
+     
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Tooltip
             title={isFavorite ? "Добавить В Избранные" : "Удалить С Избранных"}
@@ -115,7 +100,6 @@ export const FavoriteCards = ({
           <Typography paragraph>{phoneNumber?.mobile}</Typography>
           <Typography>{contactName}</Typography>
         </CardContent>
-      </Collapse>
     </StyledCard>
   );
 };

@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import "../../components/UI/FadeIn/FadeInAnimation.css";
 
-export const GreetingContainer = styled.div`
+type StyledProps = {
+  isPrimary?: boolean;
+  isSecondary?: boolean;
+};
+
+export const GreetingContainer = styled.div<StyledProps>`
   text-align: center;
   margin: 200px;
   display: flex;
@@ -52,7 +57,7 @@ export const TitleContainer = styled.div`
 
 export const GreetingTitle = styled.h1`
   font-size: 88px;
-  color: black;
+  color:${(props) => props.theme.colors.black}; 
   margin-bottom: 20px;
 
   @media (max-width: 600px) {
@@ -63,7 +68,7 @@ export const GreetingTitle = styled.h1`
 
 export const ActionText = styled.p`
   font-size: 32px;
-  color: #555;
+  color:${(props) => props.theme.colors.ActionText};
 `;
 
 export const ButtonContainer = styled.div`

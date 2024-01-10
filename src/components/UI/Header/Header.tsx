@@ -14,6 +14,8 @@ export const Header = () => {
     navigate("/profile");
   };
 
+
+
   return (
     <StyledHeader>
       <>

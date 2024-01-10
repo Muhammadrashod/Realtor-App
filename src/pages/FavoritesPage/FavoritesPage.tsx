@@ -27,6 +27,7 @@ export const FavoritesPage = () => {
     return <div>Loading...</div>;
   }
   const savedCards = localStorage.getItem("favorites");
+  console.log(savedCards)
   const parsedSavedCards = savedCards ? JSON.parse(savedCards) : [];
 
   console.log(savedCards);
@@ -41,8 +42,8 @@ export const FavoritesPage = () => {
             {data?.id &&
               parsedSavedCards.map((favoritecard: FavoriteCardItem) => (
                 <FavoriteCards
-                  key={favoritecard.objectID} // Fix typo here
-                  objectID={favoritecard.objectID} // Assuming 'id' is the correct property
+                  key={favoritecard.objectID} 
+                  objectID={favoritecard.objectID}
                   state={`Активность: ${favoritecard.state}`}
                   price={`Цена: ${favoritecard.price}`}
                   purpose={`Цель: ${favoritecard.purpose}`}
@@ -51,8 +52,8 @@ export const FavoritesPage = () => {
                   baths={`Ванные Комнаты: ${favoritecard.baths}`}
                   area={`Площадь: ${favoritecard.area}`}
                    coverPhoto={{
-                    id: favoritecard.coverPhoto?.id || "", // Check if coverPhoto is defined
-                    url: favoritecard.coverPhoto?.url || "", // Check if coverPhoto is defined
+                    id: favoritecard.coverPhoto?.id || "",
+                    url: favoritecard.coverPhoto?.url || "",
                   }}
                   phoneNumber={favoritecard.phoneNumber}
                   contactName={`Имя Продовца: ${favoritecard.contactName}`}

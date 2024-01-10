@@ -57,16 +57,12 @@ export const ProfilePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   
-  const userData = localStorage.getItem("user");
-  const {
-    username = "",
-    userlastname = "",
-    userage = "",
-    useremail = "",
-    userpassword = "",
-    usercity = "",
-  } = userData ? JSON.parse(userData) : {};
-  
+  const storedDataString = localStorage.getItem("registrationFormData" || "loginFormData");
+
+  const storedData = storedDataString ? JSON.parse(storedDataString) : null;
+
+  const username = storedData ? storedData[0] : "N/A";
+  const useremail = storedData ? storedData[3] : "N/A";
 
   const handleHomeClick = () => {
     navigate("/main");
@@ -98,7 +94,6 @@ export const ProfilePage = () => {
       <Header />
       <Container>
         <AvatarTextContainer>
-          <Heading headingText={`${username}`} headingType="h3" />
         </AvatarTextContainer>
         <HeadingContainer>
           <Heading headingText="Ваш Профиль" headingType="h1" />
@@ -109,11 +104,7 @@ export const ProfilePage = () => {
           <InfoContainer>
             <InfoText>
               <Heading headingText={`Имя: ${username}`} />
-              <Heading headingText={`Фамилия: ${userlastname}`} />
               <Heading headingText={`Почта: ${useremail}`} />
-              <Heading headingText={`Пароль: ${userpassword}`} />
-              <Heading headingText={`Возраст: ${userage}`} />
-              <Heading headingText={`Город: ${usercity}`} />
             </InfoText>
           </InfoContainer>
         </StyledProfilePage>
