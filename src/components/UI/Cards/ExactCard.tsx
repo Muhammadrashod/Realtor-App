@@ -1,15 +1,12 @@
 // ExactCard.tsx
 
 import { Typography } from "@mui/material";
-import React, { useState } from "react";
 import type { CardItem } from "../../../store/API/saleApi";
 import {
   StyledExactCard,
   StyledCardMedia,
   StyledCardContent,
   StyledCardActions,
-  DateOverlay,
-  ExpandMoreStyled,
   StyledTypography,
 } from "./ExactCard.style";
 
@@ -48,7 +45,6 @@ const ExactCard = ({
         </StyledTypography>
       </StyledCardContent>
       <StyledCardActions>
-        {/* Add any specific actions if needed */}
       </StyledCardActions>
       <StyledCardContent>
         <StyledTypography>

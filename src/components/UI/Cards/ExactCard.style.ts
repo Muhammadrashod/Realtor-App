@@ -8,15 +8,15 @@ export const StyledExactCard = styled(Card)(({ theme }) => ({
   marginLeft: "250px",
   marginTop: "-125px",
   width: "55%",
-  height: "55%", // Set the card height to 100% of the viewport height
-  borderRadius: 0, // Remove border radius for full-width appearance
+  height: "55%", 
+  borderRadius: 0,
   boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
   display: "flex",
   flexDirection: "column",
 }));
 
 export const StyledCardMedia = styled("img")({
-  flex: 1, // Let the image take up the available space
+  flex: 1, 
   width: "100%",
   objectFit: "cover",
 });
@@ -49,4 +49,3 @@ export const ExpandMoreStyled = styled(IconButton)({
   transition: "transform 0.3s",
 });
 
-// Add any additional styled components as needed
