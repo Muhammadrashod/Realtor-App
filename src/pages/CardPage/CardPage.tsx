@@ -1,8 +1,12 @@
 import React from "react";
 import { Container } from "../../components/UI/Container/Container.style";
-import { useGetExactCardQuery } from "../../store/API/saleApi";
+import { useGetExactCardQuery, RealtorResponse, CardItem } from "../../store/API/saleApi";
 import Cards from "../../components/UI/Cards/Cards";
 import { useParams } from "react-router-dom";
+
+export interface CardProps {
+  card: CardItem;
+}
 
 export const CardPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -10,7 +14,7 @@ export const CardPage = () => {
 
   console.log("Data:", data);
 
-  const card = data || null;
+  const card = data as RealtorResponse | null;
   console.log("Card:", card);
 
   return (
@@ -36,13 +40,10 @@ export const CardPage = () => {
             id: card.coverPhoto.id,
             url: card.coverPhoto.url,
           }}
-          phoneNumber={card.phoneNumber}
+          phoneNumber={card.phoneNumber.mobile}
           contactName={`Имя Продовца: ${card.contactName}`}
         />
       )}
     </Container>
   );
 };
-
-
-

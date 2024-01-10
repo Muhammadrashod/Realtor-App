@@ -7,7 +7,7 @@ export interface CardItem {
   price: string;
   purpose: string;
   title: string;
-  location: { level: number; name: string };
+  location: { level: string; name: string };
   rooms: string;
   baths: string;
   area: string;
