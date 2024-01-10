@@ -24,6 +24,20 @@ export const StyledModalInput = styled.input<IStyledInputProps>`
   border-radius: 10px;
   color: black; /* Default text color */
   border: 1px solid #526ed3;
+  `
+
+export const StyledModalTextArea = styled.textarea<IStyledInputProps>`
+  border: 1px solid transparent;
+  outline: 0;
+  display: block;
+  width: 280px;
+  height: 148px;
+  background-color: transparent;
+  padding: 12px 15px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black; 
+  border: 1px solid #526ed3;
 
   ${(props) =>
     props.$isError &&

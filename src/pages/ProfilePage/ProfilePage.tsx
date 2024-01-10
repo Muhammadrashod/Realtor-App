@@ -1,13 +1,17 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Header } from "../../components/UI/Header/Header";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Settings } from "@mui/icons-material";
 import { Home } from "@mui/icons-material";
 import { Feedback } from "@mui/icons-material";
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Modal } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
+import { Button } from "../../components/UI/Button/Button";
+import { Heading } from "../../components/Typography/Heading";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   StyledProfilePage,
   StyledAvatar,
@@ -19,10 +23,39 @@ import {
   StyledParametrs,
   StyledParamFields,
 } from "./ProfilePage.style";
-import { Heading } from "../../components/Typography/Heading";
 import { Container } from "../../components/UI/Container/Container.style";
+import {
+  StyledModalContainer,
+  StyledModalContent,
+  StyledForm,
+  StyledInputDiv,
+} from "../../components/UI/Modal/Modal.style";
+import { StyledModalTextArea } from "../../components/UI/Modal/ModalInput.style";
+
+interface IModalForm {
+  feedback: string;
+}
+
+const ModalFormSchema = yup.object({
+  feedback: yup.string().required("Обязательное поле!"),
+});
 
 export const ProfilePage = () => {
+  const {
+    control: modalControl,
+    handleSubmit: handleModalSubmit,
+    formState: { errors: modalErrors },
+  } = useForm<IModalForm>({
+    resolver: yupResolver(ModalFormSchema),
+    defaultValues: {
+      feedback: "",
+    },
+  });
+
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const location = useLocation();
   const userData = location.state?.userData || {};
 
@@ -31,6 +64,31 @@ export const ProfilePage = () => {
   const userlastname = userData?.userlastname || "N/A";
   const userage = userData?.userage || "N/A";
   const usercity = userData?.usercity || "N/A";
+
+  const handleHomeClick = () => {
+    navigate("/main");
+  };
+
+  const handleFavoritesClick = () => {
+    navigate("/favorites");
+  };
+
+  const handleFeedBackClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedOut(true);
+
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+  };
 
   return (
     <>
@@ -57,55 +115,75 @@ export const ProfilePage = () => {
         </StyledProfilePage>
 
         <StyledParametrs>
-
           <Heading headingText="Text" />
-
           <IconContainer>
-
-            <StyledParamFields>
+            <StyledParamFields onClick={handleHomeClick}>
               <IconButton aria-label="go to home">
                 <Home />
               </IconButton>
               <Heading headingText="Главная Страница" headingType="h3" />
             </StyledParamFields>
 
-            <StyledParamFields>
+            <StyledParamFields onClick={handleFeedBackClick}>
               <IconButton aria-label="give a feedback">
                 <Feedback />
               </IconButton>
               <Heading headingText="Обратная связь" headingType="h3" />
             </StyledParamFields>
 
-            <StyledParamFields>
+            <StyledParamFields onClick={handleFavoritesClick}>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon />
               </IconButton>
               <Heading headingText="Избранные" headingType="h3" />
             </StyledParamFields>
 
-            <StyledParamFields>
-              <IconButton aria-label="settings">
-                <Settings />
-              </IconButton>
-              <Heading headingText="Настройки" headingType="h3" />
-            </StyledParamFields>
-
-            <StyledParamFields>
+            <StyledParamFields onClick={handleLogout}>
               <IconButton aria-label="Logout">
                 <LogoutIcon />
               </IconButton>
-          <Heading headingText="Выйти" headingType="h3" />
-            </StyledParamFields>
-            
-            <StyledParamFields>
-              <IconButton aria-label="Delete Account">
-                <DeleteIcon />
-              </IconButton>
-          <Heading headingText="Удалить Аккаунт" headingType="h3" />
+              <Heading
+                headingText={isLoggedOut ? "Вы Вышли Из Аккаунта" : "Выйти"}
+                headingType="h3"
+              />
             </StyledParamFields>
           </IconContainer>
         </StyledParametrs>
       </Container>
+
+      <Modal open={isModalOpen} onClose={handleModalClose}>
+        <StyledModalContainer>
+          <StyledModalContent>
+            <StyledForm
+              onSubmit={handleModalSubmit((data) => {
+                console.log(data);
+                handleModalClose();
+              })}
+            >
+              <>
+                <Heading
+                  headingText="Напишите Ваши Предложения "
+                  headingType="h2"
+                />
+                <StyledInputDiv>
+                  <Controller
+                    name="feedback"
+                    control={modalControl}
+                    render={({ field }) => (
+                      <StyledModalTextArea
+                        placeholder="Введите Ваше Предложние"
+                        $isError={modalErrors.feedback ? true : false}
+                        {...field}
+                      />
+                    )}
+                  />
+                </StyledInputDiv>
+                <Button isPrimary type="submit" buttonText="Отправить" />
+              </>
+            </StyledForm>
+          </StyledModalContent>
+        </StyledModalContainer>
+      </Modal>
     </>
   );
 };

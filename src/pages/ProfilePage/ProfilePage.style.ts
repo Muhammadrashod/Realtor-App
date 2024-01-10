@@ -2,14 +2,13 @@ import styled from "styled-components";
 import { Avatar as MuiAvatar } from "@mui/material";
 import "../../components/UI/FadeIn/FadeInAnimation.css";
 
-
 export const StyledProfilePage = styled.div`
-  left: 0; 
+  left: 0;
   position: fixed;
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
   background: #fefefe;
-  width: 38%; 
+  width: 38%;
   height: 84%;
   margin-top: -100px;
   margin-left: 80px;
@@ -25,7 +24,7 @@ export const StyledParametrs = styled.div`
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
   background: #fefefe;
-  width: 38%; 
+  width: 38%;
   height: 84%;
   margin-top: -100px;
   margin-right: 80px;
@@ -90,7 +89,7 @@ export const StyledAvatar = styled(MuiAvatar)`
   margin-top: 30px;
   margin-bottom: 30px;
   border-radius: 50%;
-  left: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%) scale(4);
 `;
 
@@ -121,11 +120,10 @@ export const IconContainer = styled.div`
     }
 
     &:not(:last-child) {
-      border-bottom: 1px solid #ccc; 
+      border-bottom: 1px solid #ccc;
     }
   }
 `;
-
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -142,15 +140,41 @@ export const InfoText = styled.div`
 `;
 
 export const StyledParamFields = styled.div`
+  margin-top: 50px;
+  cursor: pointer;
   display: flex;
   text-align: center;
   justify-content: center;
-  flex-direction: row; /* Updated to have icons and headings in one line */
-  align-items: center; /* Align items in the center */
-  margin-bottom: 20px; /* Add margin to separate from the next section */
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
 
   & > * {
-    margin-right: 20px; /* Add spacing between icons and headings */
+    margin-right: 20px;
+  }
+
+  :before {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+
+  :hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  :before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    inset: 0 0 0 0;
+    background: hsl(200 100% 80%);
+    z-index: -1;
+    transition: transform 0.3s ease;
   }
 `;
-
