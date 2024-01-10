@@ -4,12 +4,12 @@ import "../../components/UI/FadeIn/FadeInAnimation.css";
 
 
 export const StyledProfilePage = styled.div`
-  left: 0; /* Set to the left edge of the page */
-  position: fixed; /* Use fixed positioning to cover the left half */
+  left: 0; 
+  position: fixed;
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
   background: #fefefe;
-  width: 38%; /* Set width to 50% to cover the left half */
+  width: 38%; 
   height: 84%;
   margin-top: -100px;
   margin-left: 80px;
@@ -20,12 +20,12 @@ export const StyledProfilePage = styled.div`
   overflow: hidden;
 `;
 export const StyledParametrs = styled.div`
-  right: 0; /* Set to the left edge of the page */
-  position: fixed; /* Use fixed positioning to cover the left half */
+  right: 0;
+  position: fixed;
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
   background: #fefefe;
-  width: 38%; /* Set width to 50% to cover the left half */
+  width: 38%; 
   height: 84%;
   margin-top: -100px;
   margin-right: 80px;
@@ -90,8 +90,8 @@ export const StyledAvatar = styled(MuiAvatar)`
   margin-top: 30px;
   margin-bottom: 30px;
   border-radius: 50%;
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%) scale(4); /* Adjust the scale factor to make it enormous */
+  left: 50%; 
+  transform: translate(-50%, -50%) scale(4);
 `;
 
 export const MiniAvatar = styled(MuiAvatar)`
@@ -114,14 +114,14 @@ export const IconContainer = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    padding-bottom: 10px; /* Added padding for spacing */
+    padding-bottom: 10px;
 
     & > * {
       margin-right: 10px;
     }
 
     &:not(:last-child) {
-      border-bottom: 1px solid #ccc; /* Border between each line */
+      border-bottom: 1px solid #ccc; 
     }
   }
 `;
@@ -137,7 +137,20 @@ export const InfoText = styled.div`
   margin-top: 20px;
   text-align: center;
   display: grid;
-  grid-template-rows: auto; /* Each row will be auto-sized */
+  grid-template-rows: auto;
   gap: 44px;
+`;
+
+export const StyledParamFields = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row; /* Updated to have icons and headings in one line */
+  align-items: center; /* Align items in the center */
+  margin-bottom: 20px; /* Add margin to separate from the next section */
+
+  & > * {
+    margin-right: 20px; /* Add spacing between icons and headings */
+  }
 `;
 

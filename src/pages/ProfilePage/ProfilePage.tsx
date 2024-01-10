@@ -5,6 +5,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Settings } from "@mui/icons-material";
+import { Home } from "@mui/icons-material";
+import { Feedback } from "@mui/icons-material";
+import DeleteIcon from '@mui/icons-material/Delete';
 import {
   StyledProfilePage,
   StyledAvatar,
@@ -14,6 +17,7 @@ import {
   HeadingContainer,
   AvatarTextContainer,
   StyledParametrs,
+  StyledParamFields,
 } from "./ProfilePage.style";
 import { Heading } from "../../components/Typography/Heading";
 import { Container } from "../../components/UI/Container/Container.style";
@@ -27,7 +31,6 @@ export const ProfilePage = () => {
   const userlastname = userData?.userlastname || "N/A";
   const userage = userData?.userage || "N/A";
   const usercity = userData?.usercity || "N/A";
-  // Add more properties as needed
 
   return (
     <>
@@ -49,27 +52,58 @@ export const ProfilePage = () => {
               <Heading headingText={`Фамилия: ${userlastname}`} />
               <Heading headingText={`Возраст: ${userage}`} />
               <Heading headingText={`Город: ${usercity}`} />
-              {/* Add more lines for other user data */}
             </InfoText>
           </InfoContainer>
         </StyledProfilePage>
 
         <StyledParametrs>
+
           <Heading headingText="Text" />
+
           <IconContainer>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <Heading headingText="Избранные" headingType="h3" />
-            <IconButton aria-label="settings">
-              <Settings />
-            </IconButton>
-            <Heading headingText="Настройки" headingType="h3" />
-            <IconButton aria-label="Logout">
-              <LogoutIcon />
-            </IconButton>
-          </IconContainer>
+
+            <StyledParamFields>
+              <IconButton aria-label="go to home">
+                <Home />
+              </IconButton>
+              <Heading headingText="Главная Страница" headingType="h3" />
+            </StyledParamFields>
+
+            <StyledParamFields>
+              <IconButton aria-label="give a feedback">
+                <Feedback />
+              </IconButton>
+              <Heading headingText="Обратная связь" headingType="h3" />
+            </StyledParamFields>
+
+            <StyledParamFields>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+              <Heading headingText="Избранные" headingType="h3" />
+            </StyledParamFields>
+
+            <StyledParamFields>
+              <IconButton aria-label="settings">
+                <Settings />
+              </IconButton>
+              <Heading headingText="Настройки" headingType="h3" />
+            </StyledParamFields>
+
+            <StyledParamFields>
+              <IconButton aria-label="Logout">
+                <LogoutIcon />
+              </IconButton>
           <Heading headingText="Выйти" headingType="h3" />
+            </StyledParamFields>
+            
+            <StyledParamFields>
+              <IconButton aria-label="Delete Account">
+                <DeleteIcon />
+              </IconButton>
+          <Heading headingText="Удалить Аккаунт" headingType="h3" />
+            </StyledParamFields>
+          </IconContainer>
         </StyledParametrs>
       </Container>
     </>

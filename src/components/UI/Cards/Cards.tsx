@@ -60,10 +60,9 @@ export const Cards = ({
       ? `Added card with ID ${id} from favorites.`
       : `Removed card with ID ${id} to favorites.`
   );
-  
 
-  const handleGoToProfile = () => {
-    navigate("/profile");
+  const handleGoToCard = () => {
+    navigate(`/card/${id}`);
   };
 
   return (
@@ -106,7 +105,7 @@ export const Cards = ({
             </IconButton>
           </Tooltip>
           <Tooltip title="Открыть Карточку">
-            <IconButton aria-label="Go To Card" onClick={handleGoToProfile}>
+            <IconButton aria-label="Go To Card" onClick={handleGoToCard}>
               <ViewDayIcon />
             </IconButton>
           </Tooltip>
