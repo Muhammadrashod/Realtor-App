@@ -60,8 +60,9 @@ export const ProfilePage = () => {
   const userData = location.state?.userData || {};
 
   const username = userData?.useremail || "N/A";
-  const userpassword = userData?.userpassword || "N/A";
   const userlastname = userData?.userlastname || "N/A";
+  const useremail = userData?.userpassword || "N/A";
+  const userpassword = userData?.userpassword || "N/A";
   const userage = userData?.userage || "N/A";
   const usercity = userData?.usercity || "N/A";
 
@@ -105,9 +106,10 @@ export const ProfilePage = () => {
           <StyledAvatar />
           <InfoContainer>
             <InfoText>
-              <Heading headingText={`Почта: ${username}`} />
-              <Heading headingText={`Пароль: ${userpassword}`} />
+              <Heading headingText={`Имя: ${username}`} />
               <Heading headingText={`Фамилия: ${userlastname}`} />
+              <Heading headingText={`Почта: ${useremail}`} />
+              <Heading headingText={`Пароль: ${userpassword}`} />
               <Heading headingText={`Возраст: ${userage}`} />
               <Heading headingText={`Город: ${usercity}`} />
             </InfoText>
@@ -115,7 +117,7 @@ export const ProfilePage = () => {
         </StyledProfilePage>
 
         <StyledParametrs>
-          <Heading headingText="Text" />
+          <Heading headingText="Параметры" headingType="h1" />
           <IconContainer>
             <StyledParamFields onClick={handleHomeClick}>
               <IconButton aria-label="go to home">
@@ -125,7 +127,7 @@ export const ProfilePage = () => {
             </StyledParamFields>
 
             <StyledParamFields onClick={handleFeedBackClick}>
-              <IconButton aria-label="give a feedback">
+              <IconButton aria-label="give feedback">
                 <Feedback />
               </IconButton>
               <Heading headingText="Обратная связь" headingType="h3" />
@@ -143,7 +145,7 @@ export const ProfilePage = () => {
                 <LogoutIcon />
               </IconButton>
               <Heading
-                headingText={isLoggedOut ? "Вы Вышли Из Аккаунта" : "Выйти"}
+                headingText={isLoggedOut ? "Вы вышли из аккаунта" : "Выйти"}
                 headingType="h3"
               />
             </StyledParamFields>
@@ -171,7 +173,7 @@ export const ProfilePage = () => {
                     control={modalControl}
                     render={({ field }) => (
                       <StyledModalTextArea
-                        placeholder="Введите Ваше Предложние"
+                        placeholder="Введите Ваше Предложение"
                         $isError={modalErrors.feedback ? true : false}
                         {...field}
                       />
