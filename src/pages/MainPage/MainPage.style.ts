@@ -6,17 +6,18 @@ export const StyledMainPage = styled.div`
 `;
 
 export const CardsContainer = styled.div`
- display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 50px; 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
 
   @media (max-width: 530px) {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
-`
+`;
 
 export const FavContainer = styled.div`
-position: absolute;
-margin-top: -50px;
-margin-left: 1425px;
-`
+  animation: fadeIn 3s ease-out forwards;
+  position: absolute;
+  margin-top: -50px;
+  margin-left: 1425px;
+`;
