@@ -7,7 +7,7 @@ import { Header } from "../../components/UI/Header/Header";
 import { Heading } from "../../components/Typography/Heading";
 import { IconButton, Tooltip } from "@mui/material";
 import Favorite from "@mui/icons-material/Favorite";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
   const { data, error, isLoading } = useGetForSaleQuery("5002,6020");
@@ -45,7 +45,6 @@ export const MainPage = () => {
           <CardsContainer>
             {data?.hits &&
               data.hits.map((card: CardItem) => (
-                <Link key={card.id} to={`/card/${card.id}`}>
                   <Cards
                     key={card.id}
                     id={card.id}
@@ -67,7 +66,6 @@ export const MainPage = () => {
                     phoneNumber={card.phoneNumber}
                     contactName={`Имя Продовца: ${card.contactName}`}
                   />
-                </Link>
               ))}
           </CardsContainer>
         </StyledMainPage>
