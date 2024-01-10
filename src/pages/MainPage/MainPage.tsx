@@ -7,11 +7,11 @@ import { Header } from "../../components/UI/Header/Header";
 import { Heading } from "../../components/Typography/Heading";
 import { IconButton, Tooltip } from "@mui/material";
 import Favorite from "@mui/icons-material/Favorite";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
   const { data, error, isLoading } = useGetForSaleQuery("5002,6020");
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
   if (data) {
     console.log(data);
@@ -29,15 +29,14 @@ export const MainPage = () => {
     navigate("/favorites");
   };
 
-
   return (
     <>
       <Header />
       <FavContainer>
         <Tooltip title="Перейти В Избранные" onClick={handleFavoritesClick}>
-              <IconButton aria-label="Перейти В Избранные">
-                <Favorite />
-              </IconButton>
+          <IconButton aria-label="Перейти В Избранные">
+            <Favorite />
+          </IconButton>
         </Tooltip>
       </FavContainer>
       <Container>
@@ -46,27 +45,29 @@ export const MainPage = () => {
           <CardsContainer>
             {data?.hits &&
               data.hits.map((card: CardItem) => (
-                <Cards
-                  key={card.id}
-                  id={card.id}
-                  state={`Активность: ${card.state}`}
-                  price={`Цена: ${card.price}`}
-                  purpose={`Цель: ${card.purpose}`}
-                  title={card.title}
-                  location={{
-                    level: card.location.level,
-                    name: card.location.name,
-                  }}
-                  rooms={`Количество Комнат: ${card.rooms}`}
-                  baths={`Количество Ванных Комнат: ${card.baths}`}
-                  area={`Площадь: ${card.area}`}
-                  coverPhoto={{
-                    id: card.coverPhoto.id,
-                    url: card.coverPhoto.url,
-                  }}
-                  phoneNumber={card.phoneNumber}
-                  contactName={`Имя Продовца: ${card.contactName}`}
-                />
+                <Link key={card.id} to={`/card/${card.id}`}>
+                  <Cards
+                    key={card.id}
+                    id={card.id}
+                    state={`Активность: ${card.state}`}
+                    price={`Цена: ${card.price}`}
+                    purpose={`Цель: ${card.purpose}`}
+                    title={card.title}
+                    location={{
+                      level: card.location.level,
+                      name: card.location.name,
+                    }}
+                    rooms={`Количество Комнат: ${card.rooms}`}
+                    baths={`Количество Ванных Комнат: ${card.baths}`}
+                    area={`Площадь: ${card.area}`}
+                    coverPhoto={{
+                      id: card.coverPhoto.id,
+                      url: card.coverPhoto.url,
+                    }}
+                    phoneNumber={card.phoneNumber}
+                    contactName={`Имя Продовца: ${card.contactName}`}
+                  />
+                </Link>
               ))}
           </CardsContainer>
         </StyledMainPage>
