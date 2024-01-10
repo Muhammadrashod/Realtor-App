@@ -72,7 +72,7 @@ export const ProfilePage = () => {
     navigate("/main");
   };
 
-  const handleFavoritesClick = () => {
+   const handleFavoritesClick = () => {
     navigate("/favorites");
   };
 

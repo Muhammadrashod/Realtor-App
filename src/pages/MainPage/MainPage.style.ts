@@ -14,3 +14,9 @@ export const CardsContainer = styled.div`
     grid-template-columns: repeat(2, 1fr); 
   }
 `
+
+export const FavContainer = styled.div`
+position: absolute;
+margin-top: -50px;
+margin-left: 1425px;
+`

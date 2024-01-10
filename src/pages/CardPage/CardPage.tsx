@@ -1,8 +1,8 @@
 import React from "react";
 import { Container } from "../../components/UI/Container/Container.style";
 import { useGetExactCardQuery, RealtorResponse, CardItem } from "../../store/API/saleApi";
-import Cards from "../../components/UI/Cards/Cards";
 import { useParams } from "react-router-dom";
+import ExactCard from "../../components/UI/Cards/ExactCard";
 
 export interface CardProps {
   card: CardItem;
@@ -22,7 +22,7 @@ export const CardPage = () => {
       {isError && <h1>Произошла Ошибка</h1>}
       {isLoading && <h1>Идет Загрузка...</h1>}
       {card && (
-        <Cards
+        <ExactCard
           key={card.id}
           id={card.id}
           state={`Активность: ${card.state}`}

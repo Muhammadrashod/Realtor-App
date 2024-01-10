@@ -2,13 +2,16 @@ import React from "react";
 import { Container } from "../../components/UI/Container/Container.style";
 import { CardItem, useGetForSaleQuery } from "../../store/API/saleApi";
 import Cards from "../../components/UI/Cards/Cards";
-import { CardsContainer, StyledMainPage } from "./MainPage.style";
+import { CardsContainer, FavContainer, StyledMainPage } from "./MainPage.style";
 import { Header } from "../../components/UI/Header/Header";
 import { Heading } from "../../components/Typography/Heading";
-import { Link } from "../../components/UI/Link/Link";
+import { IconButton, Tooltip } from "@mui/material";
+import Favorite from "@mui/icons-material/Favorite";
+import { useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
   const { data, error, isLoading } = useGetForSaleQuery("5002,6020");
+  const navigate= useNavigate()
 
   if (data) {
     console.log(data);
@@ -22,14 +25,23 @@ export const MainPage = () => {
     return <div>Loading...</div>;
   }
 
+  const handleFavoritesClick = () => {
+    navigate("/favorites");
+  };
+
+
   return (
     <>
       <Header />
+      <FavContainer>
+        <Tooltip title="Перейти В Избранные" onClick={handleFavoritesClick}>
+              <IconButton aria-label="Перейти В Избранные">
+                <Favorite />
+              </IconButton>
+        </Tooltip>
+      </FavContainer>
       <Container>
         <StyledMainPage>
-       <Link href="/main" text="Купить"/>
-       <Link href="/profile" text="Продать"/>
-       <Link href="/favorites" text="Избранные"/>
           <Heading headingText="Дома В Продаже" />
           <CardsContainer>
             {data?.hits &&
