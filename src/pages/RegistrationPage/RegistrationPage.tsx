@@ -10,7 +10,6 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { LoginInfo } from "../../components/UI/LoginInfo/LoginInfo";
 import { GreetingHeader } from "../GreetingPage/GreetingHeader/GreetingHeader";
-
 interface IRegistrationForm {
   username: string;
   userlastname: string;
@@ -83,7 +82,6 @@ export const RegistrationPage = () => {
       const mergedData = { ...existingData, ...formData };
 
       localStorage.setItem(userKey, JSON.stringify(mergedData));
-      localStorage.setItem("user", JSON.stringify(formData));
 
       console.log("Form Data:", mergedData);
 

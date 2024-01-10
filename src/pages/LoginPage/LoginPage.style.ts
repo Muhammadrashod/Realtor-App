@@ -4,7 +4,7 @@ import "../../components/UI/FadeIn/FadeInAnimation.css";
 export const StyledLoginPage = styled.div`
   box-shadow: 0 0 10px #e3e3e3;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: #fff;//lightBgc
   margin: 0 auto;
   width: 80%; 
   max-width: 400px; 

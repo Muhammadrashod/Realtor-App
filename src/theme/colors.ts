@@ -1,5 +1,5 @@
 export const colors = {
-    bgc: "#fff",
+    lightBgc: "#fff",
     elemsBgc: "#fff",
     primeColor: "#526ed3",
     darkPrime: "#314692",

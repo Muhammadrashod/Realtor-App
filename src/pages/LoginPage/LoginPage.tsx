@@ -59,9 +59,6 @@ export const LoginPage = () => {
 
     if (storedData) {
       console.log("Вы Успешно Вошли В Аккаунт", storedData);
-
-      localStorage.setItem("user", JSON.stringify(formData));
-
       navigate("/main");
     } else {
       setLoginError("Неправильный Пользователь Или Пароль");
@@ -107,7 +104,7 @@ export const LoginPage = () => {
                 />
               )}
             />
-            {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
+              {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
             <Button
               disabled={!!Object.keys(errors).length}
               isPrimary

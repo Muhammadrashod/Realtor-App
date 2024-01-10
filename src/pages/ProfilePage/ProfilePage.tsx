@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/UI/Header/Header";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -56,21 +56,17 @@ export const ProfilePage = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const storedUserData = localStorage.getItem("user");
-    if (!storedUserData) {
-      navigate("/");
-    }
-  }, [navigate]);
-
-  const userData = JSON.parse(localStorage.getItem("user") || "{}");
-
-  const username = userData?.useremail || "N/A";
-  const userlastname = userData?.userlastname || "N/A";
-  const useremail = userData?.useremail || "N/A";
-  const userpassword = userData?.userpassword || "N/A";
-  const userage = userData?.userage || "N/A";
-  const usercity = userData?.usercity || "N/A";
+  
+  const userData = localStorage.getItem("user");
+  const {
+    username = "",
+    userlastname = "",
+    userage = "",
+    useremail = "",
+    userpassword = "",
+    usercity = "",
+  } = userData ? JSON.parse(userData) : {};
+  
 
   const handleHomeClick = () => {
     navigate("/main");
