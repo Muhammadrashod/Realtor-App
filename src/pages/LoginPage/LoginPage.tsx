@@ -59,7 +59,7 @@ export const LoginPage = () => {
 
     if (storedData) {
       console.log("Вы Успешно Вошли В Аккаунт", storedData);
-      navigate("/profile");
+      navigate("/main");
     } else {
       setLoginError("Неправильный Пользователь Или Пароль");
     }

@@ -1,24 +1,48 @@
-// CardPage.tsx
 import React from "react";
+import { Container } from "../../components/UI/Container/Container.style";
+import { useGetExactCardQuery } from "../../store/API/saleApi";
+import Cards from "../../components/UI/Cards/Cards";
 import { useParams } from "react-router-dom";
-import { CardItem } from "../../store/API/saleApi";
 
-interface CardPageProps {
-  cards: CardItem[];
-}
-
-export const CardPage: React.FC<CardPageProps> = ({ cards }) => {
+export const CardPage = () => {
   const { id } = useParams<{ id: string }>();
-  const selectedCard = cards.find((card) => card.id === Number(id));
+  const { data, isLoading, isError } = useGetExactCardQuery(id);
+
+  console.log("Data:", data);
+
+  const card = data || null;
+  console.log("Card:", card);
 
   return (
-    <div>
-      <h2>{selectedCard?.title}</h2>
-      <p>Price: {selectedCard?.price}</p>
-      <p>Rooms: {selectedCard?.rooms}</p>
-      <p>Baths: {selectedCard?.baths}</p>
-      <p>Area: {selectedCard?.area}</p>
-    </div>
+    <Container>
+      {isError && <h1>Произошла Ошибка</h1>}
+      {isLoading && <h1>Идет Загрузка...</h1>}
+      {card && (
+        <Cards
+          key={card.id}
+          id={card.id}
+          state={`Активность: ${card.state}`}
+          price={`Цена: ${card.price}`}
+          purpose={`Цель: ${card.purpose}`}
+          title={card.title}
+          location={{
+            level: card.location.level,
+            name: card.location.name,
+          }}
+          rooms={`Количество Комнат: ${card.rooms}`}
+          baths={`Количество Ванных Комнат: ${card.baths}`}
+          area={`Площадь: ${card.area}`}
+          coverPhoto={{
+            id: card.coverPhoto.id,
+            url: card.coverPhoto.url,
+          }}
+          phoneNumber={card.phoneNumber}
+          contactName={`Имя Продовца: ${card.contactName}`}
+        />
+      )}
+    </Container>
   );
 };
+
+
 

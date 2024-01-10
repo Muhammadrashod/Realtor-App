@@ -85,7 +85,7 @@ export const RegistrationPage = () => {
 
       console.log("Form Data:", mergedData);
 
-      navigate("/profile");
+      navigate("/main");
     }
   };
 
