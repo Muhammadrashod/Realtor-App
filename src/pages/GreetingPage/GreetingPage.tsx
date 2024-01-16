@@ -4,7 +4,7 @@ import {
   GreetingTitle,
   ActionText,
   ButtonContainer,
-  TitleContainer, // Add the ButtonContainer import
+  TitleContainer, 
 } from "./GreetingPage.style";
 import { LinkButton } from "../../components/UI/LinkButton";
 import { GreetingHeader } from "./GreetingHeader/GreetingHeader";
